@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('konten-registrasi'); ?>
 <div class="register-box">
     <div class="card card-outline card-primary">

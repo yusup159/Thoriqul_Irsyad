@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KegiatanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard/admin', [AdminController::class, 'dashboardadmin'])->name('dashboard/admin')->middleware('userAkses:1');
     Route::get('/datakegiatan/admin', [AdminController::class, 'datakegiatanadmin'])->name('datakegiatan/admin')->middleware('userAkses:1');
     Route::get('/databerita/admin', [AdminController::class, 'databeritaadmin'])->name('databerita/admin')->middleware('userAkses:1');
+    Route::get('/tambahkegiatan/admin', [KegiatanController::class, 'tambahkegiatanadmin'])->name('tambahkegiatan/admin')->middleware('userAkses:1');
+    Route::post('/prosestambahkegiatan/admin', [KegiatanController::class, 'prosestambahkegiatanadmin'])->name('prosestambahkegiatan/admin')->middleware('userAkses:1');
 });
 
 

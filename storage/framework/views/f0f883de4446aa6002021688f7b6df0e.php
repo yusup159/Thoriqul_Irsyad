@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('konten-login'); ?>
 <div class="login-box">
     <!-- /.login-logo -->

@@ -7,14 +7,15 @@
 @endsection
 @section('sidebar')
 <div class="sidebar">
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="{{ asset('lte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-      </div>
-      <div class="info">
-        <h6 class="d-block">{{ Auth::user()->name }}</h6>
-      </div>
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+    <div class="image">
+      <img src="{{ asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus)) }}" alt="User Image" class="img-circle elevation-2" style="width: 70px; height: 70px; object-fit: cover;">
     </div>
+    <div class="info ml-3">
+      <h6 class="d-block">{{ Auth::user()->name }}</h6>
+    </div>
+  </div>
+  
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">

@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('atassidebar'); ?>
 <div class="brand-link">
   <img src="<?php echo e(asset('lte/dist/img/AdminLTELogo.png')); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -7,14 +6,15 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('sidebar'); ?>
 <div class="sidebar">
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="<?php echo e(asset('lte/dist/img/user2-160x160.jpg')); ?>" class="img-circle elevation-2" alt="User Image">
-      </div>
-      <div class="info">
-        <h6 class="d-block"><?php echo e(Auth::user()->name); ?></h6>
-      </div>
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+    <div class="image">
+      <img src="<?php echo e(asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus))); ?>" alt="User Image" class="img-circle elevation-2" style="width: 70px; height: 70px; object-fit: cover;">
     </div>
+    <div class="info ml-3">
+      <h6 class="d-block"><?php echo e(Auth::user()->name); ?></h6>
+    </div>
+  </div>
+  
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
@@ -65,6 +65,10 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Kegiatan Admin</h1>
                     </div>
+                    <div class="col-sm-6 text-right">
+                      
+                      <a href="<?php echo e(route('tambahkegiatan/admin')); ?>" class="btn btn-primary">Tambah Kegiatan</a>
+                  </div>
                 </div>
             </div>
         </div>
@@ -74,7 +78,7 @@
                     <tr>
                         <th style="width: 10px">No</th>
                         <th>Judul</th>
-                        <th>Deskripsi</th>
+                        <th style="width: 150px; height: auto;">Deskripsi</th>
                         <th>UserID</th>
                         <th>Foto</th>
                         <th>Tanggal</th>
@@ -84,7 +88,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <?php $__currentLoopData = $kegiatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $kegiatan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <td><?php echo e($key + 1); ?></td>
+                            <td><?php echo e($kegiatan->judul); ?></td>
+                            <td style="width: 150px; height: auto;" ><?php echo e($kegiatan->deskripsi); ?></td>
+                            <td><?php echo e($kegiatan->user_id); ?></td>
+                            <td><img src="<?php echo e(asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan))); ?>" style="width: 70px; height: 70px; "></td>
+                            <td><?php echo e($kegiatan->tanggal); ?></td>
+                            <td><?php echo e($kegiatan->created_at); ?></td>
+                            <td><?php echo e($kegiatan->updated_at); ?></td>
+                            <td>Aksi</td>
+                        </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </section>

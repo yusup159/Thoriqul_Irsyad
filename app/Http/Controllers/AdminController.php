@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,6 +14,7 @@ class AdminController extends Controller
         return view('admin.berita');
     }
     public function datakegiatanadmin(){
-        return view('admin.kegiatan');
+        $kegiatan = Kegiatan::all();
+        return view('admin.kegiatan', compact('kegiatan'));
     }
 }
