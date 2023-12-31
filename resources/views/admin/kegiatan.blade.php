@@ -93,7 +93,7 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $kegiatan->judul }}</td>
-                            <td style="width: 150px; height: auto;" >{{ $kegiatan->deskripsi }}</td>
+                            <td style="width: 150px; height: auto;" >{!! $kegiatan->deskripsi !!}</td>
                             <td>{{ $kegiatan->user_id }}</td>
                             <td><img src="{{ asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan)) }}" style="width: 70px; height: 70px; "></td>
                             <td>{{ $kegiatan->tanggal }}</td>

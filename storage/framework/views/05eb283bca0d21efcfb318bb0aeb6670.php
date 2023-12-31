@@ -92,7 +92,7 @@
                         <tr>
                             <td><?php echo e($key + 1); ?></td>
                             <td><?php echo e($kegiatan->judul); ?></td>
-                            <td style="width: 150px; height: auto;" ><?php echo e($kegiatan->deskripsi); ?></td>
+                            <td style="width: 150px; height: auto;" ><?php echo $kegiatan->deskripsi; ?></td>
                             <td><?php echo e($kegiatan->user_id); ?></td>
                             <td><img src="<?php echo e(asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan))); ?>" style="width: 70px; height: 70px; "></td>
                             <td><?php echo e($kegiatan->tanggal); ?></td>

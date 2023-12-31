@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('summer/summernote.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('lte/plugins/simplemde/simplemde.min.css') }}">
 </head>
@@ -63,15 +63,27 @@
     <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('lte/dist/js/adminlte.min.js') }}"></script>
-    <script src="{{ asset('lte/plugins/summernote/summernote-bs4.min.js') }}"></script>
-
+    <script src="{{ asset('summer/summernote.min.js') }}"></script>
     <script src="{{ asset('lte/dist/js/demo.js') }}"></script>
-    <script>
-        $(function () {
-            $('#summernote').summernote()
 
-            
-        })
+    <script type="text/javascript">
+        // $(document).ready(function () {
+        //     $('#summernote').summernote(); 
+        // });
+        $('#summernote').summernote({
+        toolbar: [
+    // [groupName, [list of button]]
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['strikethrough', 'superscript', 'subscript']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+        ['insert', ['link', 'picture', 'video']],
+      ],
+      heght:400,
+      popatmouse:true
+    });
     </script>
     
     
