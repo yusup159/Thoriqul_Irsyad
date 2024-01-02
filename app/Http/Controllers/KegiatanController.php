@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class KegiatanController extends Controller
 {
     public function tambahkegiatanadmin(){
-        return view('kegiatan.tambahkegiatan');
+        return view('kegiatan.tambahkegiatanadmin');
     }
     public function prosestambahkegiatanadmin(Request $request)
     {
@@ -46,6 +46,48 @@ class KegiatanController extends Controller
         ]);
 
         return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil ditambahkan!');
+
+    }
+    public function showkegiatanadmin($id){
+        $kegiatan = Kegiatan::find($id);
+        return view('admin.previewkegiatanadmin',compact('kegiatan'));
+        
+    }
+    public function editkegiatanadmin($id){
+        $kegiatan = Kegiatan::find($id);
+        return view('admin.editkegiatanadmin',compact('kegiatan'));
+    }
+    public function proseseditkegiatanadmin(Request $request ,$id){
+        $kegiatan = Kegiatan::find($id);
+        $request->validate([
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'fotokegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $deskripsi = $request->deskripsi;
+        $fotoPath = $request->file('fotokegiatan')->store('public/fotokegiatan'); 
+        $dom = new DOMDocument();
+        $dom ->loadHTML($deskripsi,9);
+        $images = $dom->getElementsByTagName('img');
+        foreach($images as $key => $img){
+                if(strpos($img->getAttribute('src'),'data:image/')===0){
+                $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+                $image_name = "/storage/contentkegiatan/" . time() . $key . '.png';
+                file_put_contents(public_path('storage/contentkegiatan') . '/' . time() . $key . '.png', $data);            
+
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$image_name);
+            }
+        }
+        $deskripsi = $dom->saveHTML();
+        $kegiatan->update([
+            'judul' => $request->input('judul'),
+            'deskripsi' => $deskripsi,
+            'fotokegiatan' => $fotoPath,
+        ]);        
+        return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil ditambahkan!');
+    }
+    public function deletekegiatanadmin($id){
 
     }
 }

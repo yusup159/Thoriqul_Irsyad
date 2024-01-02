@@ -85,7 +85,7 @@
                         <th>Tanggal</th>
                         <th>Created_at</th>
                         <th>Update_at</th>
-                        <th>Aksi</th>
+                        <th colspan="3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,7 +99,9 @@
                             <td>{{ $kegiatan->tanggal }}</td>
                             <td>{{ $kegiatan->created_at }}</td>
                             <td>{{ $kegiatan->updated_at }}</td>
-                            <td>Aksi</td>
+                            <td><a href="{{ route('showkegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-secondary">Lihat</a></td>
+                            <td><a href="{{ route('editkegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-success">Edit</a></td>
+                            <td><a href="#" type="button" class="btn btn-danger">Hapus</a></td>
                         </tr>
                     @endforeach
                 </tbody>

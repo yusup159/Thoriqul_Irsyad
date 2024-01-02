@@ -30,11 +30,20 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard/pengurus', [PengurusController::class, 'dashboardpengurus'])->name('dashboard/pengurus')->middleware('userAkses:2');
     Route::get('/datakegiatan/pengurus', [PengurusController::class, 'datakegiatanpengurus'])->name('datakegiatan/pengurus')->middleware('userAkses:2');
     Route::get('/databerita/pengurus', [PengurusController::class, 'databeritapengurus'])->name('databerita/pengurus')->middleware('userAkses:2');
+    
+    
+    
+    
     Route::get('/dashboard/admin', [AdminController::class, 'dashboardadmin'])->name('dashboard/admin')->middleware('userAkses:1');
     Route::get('/datakegiatan/admin', [AdminController::class, 'datakegiatanadmin'])->name('datakegiatan/admin')->middleware('userAkses:1');
     Route::get('/databerita/admin', [AdminController::class, 'databeritaadmin'])->name('databerita/admin')->middleware('userAkses:1');
     Route::get('/tambahkegiatan/admin', [KegiatanController::class, 'tambahkegiatanadmin'])->name('tambahkegiatan/admin')->middleware('userAkses:1');
     Route::post('/prosestambahkegiatan/admin', [KegiatanController::class, 'prosestambahkegiatanadmin'])->name('prosestambahkegiatan/admin')->middleware('userAkses:1');
+    Route::get('/showkegiatan/admin/{id}', [KegiatanController::class, 'showkegiatanadmin'])->name('showkegiatan/admin')->middleware('userAkses:1');
+    Route::get('/editkegiatan/admin/{id}', [KegiatanController::class, 'editkegiatanadmin'])->name('editkegiatan/admin')->middleware('userAkses:1');
+    Route::post('/proseseditkegiatan/admin/{id}', [KegiatanController::class, 'proseseditkegiatanadmin'])->name('proseseditkegiatan/admin')->middleware('userAkses:1');
+    Route::get('/deletekegiatan/admin/{id}', [KegiatanController::class, 'deletekegiatanadmin'])->name('deletekegiatan/admin')->middleware('userAkses:1');
+
 });
 
 
