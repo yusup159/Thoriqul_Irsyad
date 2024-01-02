@@ -60,6 +60,16 @@
 <?php $__env->startSection('content'); ?>
     <div class="content-wrapper">
         <div class="content-header">
+      
+          <?php if(session('success')): ?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo e(session('success')); ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <?php endif; ?>
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -78,7 +88,6 @@
                     <tr>
                         <th style="width: 10px">No</th>
                         <th>Judul</th>
-                        <th style="width: 150px; height: auto;">Deskripsi</th>
                         <th>UserID</th>
                         <th>Foto</th>
                         <th>Tanggal</th>
@@ -92,7 +101,6 @@
                         <tr>
                             <td><?php echo e($key + 1); ?></td>
                             <td><?php echo e($kegiatan->judul); ?></td>
-                            <td style="width: 150px; height: auto;" ><?php echo $kegiatan->deskripsi; ?></td>
                             <td><?php echo e($kegiatan->user_id); ?></td>
                             <td><img src="<?php echo e(asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan))); ?>" style="width: 70px; height: 70px; "></td>
                             <td><?php echo e($kegiatan->tanggal); ?></td>

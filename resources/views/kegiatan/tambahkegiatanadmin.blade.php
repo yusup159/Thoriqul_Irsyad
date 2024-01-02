@@ -27,11 +27,24 @@
                                 <h3 class="text-center">
                                     Tambah Kegiatan
                                 </h3>
+                                @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  <ul>
+                                    @foreach ($errors->all() as $item)
+                                    <li>{{$item}}</li>
+                                        
+                                    @endforeach
+                                  </ul>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                @endif
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="judul">Judul Kegiatan:</label>
-                                    <input type="text" name="judul" class="form-control" required>
+                                    <input type="text" name="judul" class="form-control" >
                                 </div>
 
                                 <div class="form-group">
@@ -43,13 +56,13 @@
 
                                 <div class="form-group">
                                     <label for="fotokegiatan">Foto Kegiatan:</label>
-                                    <input type="file" name="fotokegiatan" class="form-control-file" required>
+                                    <input type="file" name="fotokegiatan" class="form-control-file" >
 
                                 </div>
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary">Tambahkan Kegiatan</button>
-                                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Batal</a>
+                                    <a href="{{ route('datakegiatan/admin') }}" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>
                         </form>
@@ -81,7 +94,7 @@
         ['height', ['height']],
         ['insert', ['link', 'picture', 'video']],
       ],
-      heght:400,
+      height:300,
       popatmouse:true
     });
     </script>

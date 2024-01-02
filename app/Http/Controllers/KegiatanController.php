@@ -93,15 +93,13 @@ class KegiatanController extends Controller
             'deskripsi' => $deskripsi,
             'fotokegiatan' => $fotoPath,
         ]);        
-        return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil ditambahkan!');
+        return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil ubah!');
     }
     public function deletekegiatanadmin($id){
         $kegiatan = Kegiatan::find($id);
     
-        // Hapus foto kegiatan dari penyimpanan
         Storage::delete($kegiatan->fotokegiatan);
     
-        // Hapus gambar-gambar yang terdapat pada deskripsi kegiatan
         $dom = new DOMDocument();
         $dom->loadHTML($kegiatan->deskripsi, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
         $images = $dom->getElementsByTagName('img');
@@ -115,7 +113,6 @@ class KegiatanController extends Controller
             }
         }
     
-        // Hapus record kegiatan dari database
         $kegiatan->delete();
     
         return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil dihapus!');

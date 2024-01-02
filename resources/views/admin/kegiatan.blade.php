@@ -61,6 +61,15 @@
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
+      
+          @if(session('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          @endif
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -79,7 +88,6 @@
                     <tr>
                         <th style="width: 10px">No</th>
                         <th>Judul</th>
-                        <th style="width: 150px; height: auto;">Deskripsi</th>
                         <th>UserID</th>
                         <th>Foto</th>
                         <th>Tanggal</th>
@@ -93,7 +101,6 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $kegiatan->judul }}</td>
-                            <td style="width: 150px; height: auto;" >{!! $kegiatan->deskripsi !!}</td>
                             <td>{{ $kegiatan->user_id }}</td>
                             <td><img src="{{ asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan)) }}" style="width: 70px; height: 70px; "></td>
                             <td>{{ $kegiatan->tanggal }}</td>

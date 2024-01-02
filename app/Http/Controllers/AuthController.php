@@ -33,7 +33,7 @@ class AuthController extends Controller
                 return redirect('dashboard/pengurus');
             }
         } else {
-            return redirect('')->withErrors('Username dan Password tidak sesuai')->withInput();
+            return redirect('/login')->withErrors('Username dan Password tidak sesuai')->withInput();
         }
         
     }

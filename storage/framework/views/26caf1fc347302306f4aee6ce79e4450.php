@@ -122,6 +122,7 @@
     </section>
   </div>
 <?php $__env->stopSection(); ?>
+
 <script>
   var currentUrl = window.location.pathname;
 

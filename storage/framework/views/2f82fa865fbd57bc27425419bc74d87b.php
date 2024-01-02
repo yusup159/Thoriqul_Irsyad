@@ -33,13 +33,7 @@
   <aside class="control-sidebar control-sidebar-dark">
   </aside>
 
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+ <?php echo $__env->yieldContent('footer'); ?>
 </div>
 <script src="<?php echo e(asset('lte/plugins/jquery/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
