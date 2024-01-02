@@ -100,7 +100,7 @@
                             <td><?php echo e($kegiatan->updated_at); ?></td>
                             <td><a href="<?php echo e(route('showkegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-secondary">Lihat</a></td>
                             <td><a href="<?php echo e(route('editkegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-success">Edit</a></td>
-                            <td><a href="#" type="button" class="btn btn-danger">Hapus</a></td>
+                            <td><a href="<?php echo e(route('deletekegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-danger">Hapus</a></td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>

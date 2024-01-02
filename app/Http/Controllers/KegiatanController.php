@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class KegiatanController extends Controller
 {
@@ -62,12 +63,19 @@ class KegiatanController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'fotokegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        if ($request->hasFile('fotokegiatan')) {
+            $rules['fotokegiatan'] = 'image|mimes:jpeg,png,jpg,gif|max:2048';
+        }
         $deskripsi = $request->deskripsi;
-        $fotoPath = $request->file('fotokegiatan')->store('public/fotokegiatan'); 
+    
+    if ($request->hasFile('fotokegiatan')) {
+        $fotoPath = $request->file('fotokegiatan')->store('public/fotokegiatan');
+    } else {
+        $fotoPath = $kegiatan->fotokegiatan;
+    }
         $dom = new DOMDocument();
-        $dom ->loadHTML($deskripsi,9);
+        $dom->loadHTML($deskripsi, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
         $images = $dom->getElementsByTagName('img');
         foreach($images as $key => $img){
                 if(strpos($img->getAttribute('src'),'data:image/')===0){
@@ -88,6 +96,29 @@ class KegiatanController extends Controller
         return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil ditambahkan!');
     }
     public function deletekegiatanadmin($id){
-
+        $kegiatan = Kegiatan::find($id);
+    
+        // Hapus foto kegiatan dari penyimpanan
+        Storage::delete($kegiatan->fotokegiatan);
+    
+        // Hapus gambar-gambar yang terdapat pada deskripsi kegiatan
+        $dom = new DOMDocument();
+        $dom->loadHTML($kegiatan->deskripsi, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
+        $images = $dom->getElementsByTagName('img');
+        foreach($images as $img){
+            $src = $img->getAttribute('src');
+            if(strpos($src, '/storage/contentkegiatan/') !== false){
+                $imagePath = public_path($src);
+                if(file_exists($imagePath)){
+                    unlink($imagePath); 
+                }
+            }
+        }
+    
+        // Hapus record kegiatan dari database
+        $kegiatan->delete();
+    
+        return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil dihapus!');
     }
+    
 }
