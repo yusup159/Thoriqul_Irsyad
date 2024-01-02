@@ -20,12 +20,12 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card card-outline card-info">
-                        <form id="formTambahKegiatan" action="{{ route('proseseditkegiatan/admin', ['id' => $kegiatan->id]) }}" method="POST" enctype="multipart/form-data"
+                        <form id="formTambahBerita" action="{{ route('proseseditberita/admin', ['id' => $berita->id]) }}" method="POST" enctype="multipart/form-data"
                             class="form-horizontal">
                             @csrf
                             <div class="card-header">
                                 <h3 class="text-center">
-                                    Edit Kegiatan
+                                    Edit Berita
                                 </h3>
                             </div>
                             @if ($errors->any())
@@ -43,27 +43,27 @@
                             @endif
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="judul">Judul Kegiatan:</label>
-                                    <input type="text" name="judul" class="form-control" value="{{$kegiatan-> judul}}" >
+                                    <label for="judul">Judul Berita:</label>
+                                    <input type="text" name="judul" class="form-control" value="{{$berita->judul}}" >
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="deskripsi">Deskripsi Kegiatan:</label>
-                                    <textarea id="summernote" name="deskripsi" class="form-control" rows="4">{!! $kegiatan->deskripsi !!}</textarea>
+                                    <label for="deskripsi">Deskripsi Berita:</label>
+                                    <textarea id="summernote" name="deskripsi" class="form-control" rows="4">{!! $berita->deskripsi !!}</textarea>
                                 </div>
 
                                 
 
                                 <div class="form-group">
-                                    <img src="{{ asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan)) }}" alt="" class="image">
-                                    <label for="fotokegiatan">Foto Kegiatan:</label>
-                                    <input type="file" name="fotokegiatan" class="form-control-file" >
+                                    <img src="{{ asset('storage/fotoberita/' . basename($berita->fotoberita)) }}" alt="" class="image">
+                                    <label for="fotoberita">Foto Berita:</label>
+                                    <input type="file" name="fotoberita" class="form-control-file" >
 
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Edit Kegiatan</button>
-                                    <a href="{{ route('datakegiatan/admin') }}" class="btn btn-secondary">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Edit Berita</button>
+                                    <a href="{{ route('databerita/admin') }}" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>
                         </form>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Editors</title>
+    <title>Tambah Berita</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
@@ -20,50 +20,49 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card card-outline card-info">
-                        <form id="formTambahKegiatan" action="{{ route('proseseditkegiatan/admin', ['id' => $kegiatan->id]) }}" method="POST" enctype="multipart/form-data"
+                        <form id="formTambahBerita" action="{{ route('prosestambahberita/admin') }}" method="POST" enctype="multipart/form-data"
                             class="form-horizontal">
                             @csrf
                             <div class="card-header">
                                 <h3 class="text-center">
-                                    Edit Kegiatan
+                                    Tambah Berita
                                 </h3>
+                                @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                  <ul>
+                                    @foreach ($errors->all() as $item)
+                                    <li>{{$item}}</li>
+                                        
+                                    @endforeach
+                                  </ul>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                @endif
                             </div>
-                            @if ($errors->any())
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                              <ul>
-                                @foreach ($errors->all() as $item)
-                                <li>{{$item}}</li>
-
-                                @endforeach
-                              </ul>
-                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            @endif
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="judul">Judul Kegiatan:</label>
-                                    <input type="text" name="judul" class="form-control" value="{{$kegiatan-> judul}}" >
+                                    <label for="judul">Judul Berita:</label>
+                                    <input type="text" name="judul" class="form-control" >
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="deskripsi">Deskripsi Kegiatan:</label>
-                                    <textarea id="summernote" name="deskripsi" class="form-control" rows="4">{!! $kegiatan->deskripsi !!}</textarea>
+                                    <label for="deskripsi">Deskripsi Berita:</label>
+                                    <textarea id="summernote" name="deskripsi" class="form-control" rows="4"></textarea>
                                 </div>
 
                                 
 
                                 <div class="form-group">
-                                    <img src="{{ asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan)) }}" alt="" class="image">
-                                    <label for="fotokegiatan">Foto Kegiatan:</label>
-                                    <input type="file" name="fotokegiatan" class="form-control-file" >
+                                    <label for="fotoberita">Foto Berita:</label>
+                                    <input type="file" name="fotoberita" class="form-control-file" >
 
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Edit Kegiatan</button>
-                                    <a href="{{ route('datakegiatan/admin') }}" class="btn btn-secondary">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Tambahkan Berita</button>
+                                    <a href="{{ route('databerita/admin') }}" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>
                         </form>
@@ -95,7 +94,7 @@
         ['height', ['height']],
         ['insert', ['link', 'picture', 'video']],
       ],
-      height:400,
+      height:300,
       popatmouse:true
     });
     </script>

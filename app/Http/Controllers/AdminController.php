@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\Kegiatan;
 
 
 class AdminController extends Controller
 {
+    public function profiladmin(){
+        return view('admin.profiladmin');
+
+    }
     public function dashboardadmin(){
         return view('admin.dashboard');
     }
     public function databeritaadmin(){
-        return view('admin.berita');
+        $berita = Berita::all();
+        return view('admin.berita', compact('berita'));
     }
     public function datakegiatanadmin(){
         $kegiatan = Kegiatan::all();

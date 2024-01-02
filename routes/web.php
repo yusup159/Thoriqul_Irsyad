@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KegiatanController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,10 +34,17 @@ Route::middleware(['auth'])->group(function(){
     
     
     
-    
+    Route::get('/profil/admin', [AdminController::class, 'profiladmin'])->name('profil/admin')->middleware('userAkses:1');
     Route::get('/dashboard/admin', [AdminController::class, 'dashboardadmin'])->name('dashboard/admin')->middleware('userAkses:1');
     Route::get('/datakegiatan/admin', [AdminController::class, 'datakegiatanadmin'])->name('datakegiatan/admin')->middleware('userAkses:1');
     Route::get('/databerita/admin', [AdminController::class, 'databeritaadmin'])->name('databerita/admin')->middleware('userAkses:1');
+    Route::get('/tambahberita/admin', [BeritaController::class, 'tambahberitaadmin'])->name('tambahberita/admin')->middleware('userAkses:1');
+    Route::post('/prosestambahberita/admin', [BeritaController::class, 'prosestambahberitaadmin'])->name('prosestambahberita/admin')->middleware('userAkses:1');
+    Route::get('/showberita/admin/{id}', [BeritaController::class, 'showberitaadmin'])->name('showberita/admin')->middleware('userAkses:1');
+    Route::get('/editberita/admin/{id}', [BeritaController::class, 'editberitaadmin'])->name('editberita/admin')->middleware('userAkses:1');
+    Route::post('/proseseditberita/admin/{id}', [BeritaController::class, 'proseseditberitaadmin'])->name('proseseditberita/admin')->middleware('userAkses:1');
+    Route::get('/deleteberita/admin/{id}', [BeritaController::class, 'deleteberitaadmin'])->name('deleteberita/admin')->middleware('userAkses:1');
+
     Route::get('/tambahkegiatan/admin', [KegiatanController::class, 'tambahkegiatanadmin'])->name('tambahkegiatan/admin')->middleware('userAkses:1');
     Route::post('/prosestambahkegiatan/admin', [KegiatanController::class, 'prosestambahkegiatanadmin'])->name('prosestambahkegiatan/admin')->middleware('userAkses:1');
     Route::get('/showkegiatan/admin/{id}', [KegiatanController::class, 'showkegiatanadmin'])->name('showkegiatan/admin')->middleware('userAkses:1');
