@@ -18,6 +18,14 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
+          <a href="<?php echo e(route('datauser/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('datauser/admin') ? 'active' : ''); ?>">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                  Data User
+              </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?php echo e(route('dashboard/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard/admin') ? 'active' : ''); ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
@@ -107,8 +115,8 @@
                             <td><?php echo e($kegiatan->created_at); ?></td>
                             <td><?php echo e($kegiatan->updated_at); ?></td>
                             <td><a href="<?php echo e(route('showkegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-secondary">Lihat</a></td>
-                            <td><a href="<?php echo e(route('editkegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-success">Edit</a></td>
-                            <td><a href="<?php echo e(route('deletekegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-danger">Hapus</a></td>
+                            <td><a href="<?php echo e(route('editkegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
+                            <td><a href="<?php echo e(route('deletekegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>

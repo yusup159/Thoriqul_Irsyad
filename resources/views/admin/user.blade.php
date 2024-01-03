@@ -110,7 +110,7 @@
                             <td>{{ $user->role_id }}</td>
                          
                             
-                            <td><a href="{{ route('deleteuser/admin', ['id' => $user->id]) }}" type="button" class="btn btn-danger">Hapus</a></td>
+                            <td><a href="{{ route('deleteuser/admin', ['id' => $user->id]) }}" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
                         </tr>
                     @endforeach
                 </tbody>

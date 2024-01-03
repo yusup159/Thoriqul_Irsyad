@@ -149,7 +149,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-simpan" type="submit">Edit Data</button>
+                                    <button class="btn btn-simpan" type="submit" onclick="return confirm('Yakin Akan Mengubah Data Profil?')">Edit Data</button>
                                 </div>
                             </div>
                         </form>

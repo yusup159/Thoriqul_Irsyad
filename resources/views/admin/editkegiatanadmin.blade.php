@@ -55,14 +55,14 @@
                                 
 
                                 <div class="form-group">
-                                    <img src="{{ asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan)) }}" alt="" class="image">
+                                    <img src="{{ asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan)) }}" alt="" class="image w-100">
                                     <label for="fotokegiatan">Foto Kegiatan:</label>
                                     <input type="file" name="fotokegiatan" class="form-control-file" >
 
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Edit Kegiatan</button>
+                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Konfirmasi Perubahan')">Edit Kegiatan</button>
                                     <a href="{{ route('datakegiatan/admin') }}" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>

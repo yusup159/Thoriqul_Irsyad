@@ -115,8 +115,8 @@
                             <td>{{ $kegiatan->created_at }}</td>
                             <td>{{ $kegiatan->updated_at }}</td>
                             <td><a href="{{ route('showkegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-secondary">Lihat</a></td>
-                            <td><a href="{{ route('editkegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-success">Edit</a></td>
-                            <td><a href="{{ route('deletekegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-danger">Hapus</a></td>
+                            <td><a href="{{ route('editkegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
+                            <td><a href="{{ route('deletekegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
                         </tr>
                     @endforeach
                 </tbody>

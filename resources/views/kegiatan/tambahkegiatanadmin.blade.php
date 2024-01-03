@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Tambahkan Kegiatan</button>
+                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Konfirmasi Untuk menambahkan kegiatan !!')">Tambahkan Kegiatan</button>
                                     <a href="{{ route('datakegiatan/admin') }}" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>

@@ -115,8 +115,8 @@
                             <td>{{ $berita->created_at }}</td>
                             <td>{{ $berita->updated_at }}</td>
                             <td><a href="{{ route('showberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-secondary">Lihat</a></td>
-                            <td><a href="{{ route('editberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-success">Edit</a></td>
-                            <td><a href="{{ route('deleteberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-danger">Hapus</a></td>
+                            <td><a href="{{ route('editberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
+                            <td><a href="{{ route('deleteberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
                         </tr>
                     @endforeach
                 </tbody>

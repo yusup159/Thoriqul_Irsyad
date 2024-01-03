@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Tambahkan Berita</button>
+                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Konfirmasi Untuk Menambah berita !!')">Tambahkan Berita</button>
                                     <a href="{{ route('databerita/admin') }}" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>

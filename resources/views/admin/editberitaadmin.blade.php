@@ -55,14 +55,14 @@
                                 
 
                                 <div class="form-group">
-                                    <img src="{{ asset('storage/fotoberita/' . basename($berita->fotoberita)) }}" alt="" class="image">
+                                    <img src="{{ asset('storage/fotoberita/' . basename($berita->fotoberita)) }}" alt="" class="image w-100">
                                     <label for="fotoberita">Foto Berita:</label>
                                     <input type="file" name="fotoberita" class="form-control-file" >
 
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Edit Berita</button>
+                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Konfirmasi Perubahan')">Edit Berita</button>
                                     <a href="{{ route('databerita/admin') }}" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>
