@@ -6,14 +6,16 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('sidebar'); ?>
 <div class="sidebar">
-  <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
-    <div class="image">
-      <img src="<?php echo e(asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus))); ?>" alt="User Image" class="img-circle elevation-2" style="width: 70px; height: 70px; object-fit: cover;">
-    </div>
-    <div class="info ml-3">
-      <h6 class="d-block"><?php echo e(Auth::user()->name); ?></h6>
-    </div>
-  </div>
+  <a href="<?php echo e(route('profil/admin')); ?>">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+        <div class="image">
+          <img src="<?php echo e(asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus))); ?>" alt="User Image" class="img-circle elevation-2" style="width: 70px; height: 70px; object-fit: cover;">
+        </div>
+        <div class="info ml-3">
+          <h6 class="d-block"><?php echo e(Auth::user()->name); ?></h6>
+        </div>
+      </div>
+    </a>
   
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

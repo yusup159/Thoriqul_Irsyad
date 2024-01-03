@@ -62,8 +62,9 @@ class AdminController extends Controller
         }
     }
     public function datauser(){
-        $user = User::all();
-        return view('admin.user', compact('user'));
+        $user = User::orderBy('created_at', 'desc')->get();
+     return view('admin.user', compact('user'));
+
     }
     public function deleteuser($id){
         $user = User::find($id);
@@ -80,11 +81,13 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
     public function databeritaadmin(){
-        $berita = Berita::all();
+        $berita = Berita::orderBy('created_at', 'desc')->get();
         return view('admin.berita', compact('berita'));
+        
     }
     public function datakegiatanadmin(){
-        $kegiatan = Kegiatan::all();
+        $kegiatan = Kegiatan::orderBy('created_at', 'desc')->get();
         return view('admin.kegiatan', compact('kegiatan'));
+        
     }
 }

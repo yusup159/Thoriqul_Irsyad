@@ -70,7 +70,7 @@ class AuthController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'fotopengurus' => $fotoPath,
-            'role_id' => 1, 
+            'role_id' => 2, 
         ]);
     
        
