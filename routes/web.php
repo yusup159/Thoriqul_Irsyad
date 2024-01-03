@@ -35,6 +35,11 @@ Route::middleware(['auth'])->group(function(){
     
     
     Route::get('/profil/admin', [AdminController::class, 'profiladmin'])->name('profil/admin')->middleware('userAkses:1');
+    Route::post('/updateprofil/admin/{id}', [AdminController::class, 'proseseditprofiladmin'])->name('updateprofil/admin')->middleware('userAkses:1');
+    Route::get('/datauser/admin', [AdminController::class, 'datauser'])->name('datauser/admin')->middleware('userAkses:1');
+    Route::get('/deleteusera/admin/{id}', [AdminController::class, 'deleteuser'])->name('deleteuser/admin')->middleware('userAkses:1');
+   
+   
     Route::get('/dashboard/admin', [AdminController::class, 'dashboardadmin'])->name('dashboard/admin')->middleware('userAkses:1');
     Route::get('/datakegiatan/admin', [AdminController::class, 'datakegiatanadmin'])->name('datakegiatan/admin')->middleware('userAkses:1');
     Route::get('/databerita/admin', [AdminController::class, 'databeritaadmin'])->name('databerita/admin')->middleware('userAkses:1');

@@ -1,12 +1,13 @@
 @extends('layoutadmin.main')
 @section('atassidebar')
 <div class="brand-link">
-  <img src="{{ asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-  <p>Thoriqul Irsyad</p>
+    <img src="{{ asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <p>Thoriqul Irsyad</p>
 </div>
 @endsection
 @section('sidebar')
 <div class="sidebar">
+  <a href="{{ route('profil/admin') }}">
   <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
     <div class="image">
       <img src="{{ asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus)) }}" alt="User Image" class="img-circle elevation-2" style="width: 70px; height: 70px; object-fit: cover;">
@@ -15,16 +16,16 @@
       <h6 class="d-block">{{ Auth::user()->name }}</h6>
     </div>
   </div>
-  
+  </a>
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="{{ route('datauser/admin') }}" class="nav-link {{ request()->routeIs('datauser/admin') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                  Data User
-              </p>
-          </a>
+            <a href="{{ route('datauser/admin') }}" class="nav-link {{ request()->routeIs('datauser/admin') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Data User
+                </p>
+            </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
@@ -81,12 +82,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Berita Admin</h1>
+                        <h1 class="m-0">Data User</h1>
                     </div>
-                    <div class="col-sm-6 text-right">
-                      
-                      <a href="{{ route('tambahberita/admin') }}" class="btn btn-primary">Tambah Berita</a>
-                  </div>
+                  
                 </div>
             </div>
         </div>
@@ -98,25 +96,21 @@
                         <th>Judul</th>
                         <th>UserID</th>
                         <th>Foto</th>
-                        <th>Tanggal</th>
-                        <th>Created_at</th>
-                        <th>Update_at</th>
-                        <th colspan="3">Aksi</th>
+                        <th>Role</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($berita as $key => $berita)
+                    @foreach($user as $key => $user)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ $berita->judul }}</td>
-                            <td>{{ $berita->user_id }}</td>
-                            <td><img src="{{ asset('storage/fotoberita/' . basename($berita->fotoberita)) }}" style="width: 70px; height: 70px; "></td>
-                            <td>{{ $berita->tanggal }}</td>
-                            <td>{{ $berita->created_at }}</td>
-                            <td>{{ $berita->updated_at }}</td>
-                            <td><a href="{{ route('showberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-secondary">Lihat</a></td>
-                            <td><a href="{{ route('editberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-success">Edit</a></td>
-                            <td><a href="{{ route('deleteberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-danger">Hapus</a></td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td><img src="{{ asset('storage/fotopengurus/' . basename($user->fotopengurus)) }}" style="width: 70px; height: 70px; "></td>
+                            <td>{{ $user->role_id }}</td>
+                         
+                            
+                            <td><a href="{{ route('deleteuser/admin', ['id' => $user->id]) }}" type="button" class="btn btn-danger">Hapus</a></td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -124,15 +118,6 @@
         </section>
     </div>
 @endsection
-{{-- @section('footer')
-<footer class="main-footer">
-  <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-  All rights reserved.
-  <div class="float-right d-none d-sm-inline-block">
-    <b>Version</b> 3.2.0
-  </div>
-</footer>
-@endsection --}}
 <script>
   var currentUrl = window.location.pathname;
 

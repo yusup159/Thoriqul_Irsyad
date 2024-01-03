@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+
+
+.donasi .point{
+    margin-top: -10px;
+    font-weight: 600;
+}
+
+.btn-simpan{
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: none;
+    color:#fff;
+    background-color: #2447F9;
+    margin-top: 24px;
+}
+
+.btn-simpan:hover{
+    background-color: #0c2ed7;
+    color: #eeeeee;
+}
+
+
+.profile{
+    height: 120px;
+    width: 120px;
+    border-radius: 100px;
+}
+

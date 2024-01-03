@@ -20,6 +20,14 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
+          <a href="{{ route('datauser/admin') }}" class="nav-link {{ request()->routeIs('datauser/admin') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                  Data User
+              </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>

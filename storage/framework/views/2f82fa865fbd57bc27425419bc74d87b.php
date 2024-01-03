@@ -10,6 +10,12 @@
 <link rel="stylesheet" href="<?php echo e(asset('lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('lte/dist/css/adminlte.min.css')); ?>">
 
+<link rel="stylesheet" href="<?php echo e(asset('pesantren/css/adminlte.min.css')); ?>">
+<!-- Theme style -->
+<link rel="stylesheet" href="<?php echo e(asset('pesantren/css/all.min.css')); ?>">
+<!-- My Style -->
+<link rel="stylesheet" href="<?php echo e(asset('pesantren/css/profiluser.css')); ?>">
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -33,8 +39,14 @@
   <aside class="control-sidebar control-sidebar-dark">
   </aside>
 
- <?php echo $__env->yieldContent('footer'); ?>
+  
+  <?php echo $__env->yieldContent('kontenprofil'); ?>
 </div>
+<script src="<?php echo e(asset('pesantren/js/jquery.min.js')); ?>"></script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo e(asset('pesantren/js/bootstrap.bundle.min.js')); ?>"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo e(asset('pesantren/js/adminlte.min.js')); ?>"></script>
 <script src="<?php echo e(asset('lte/plugins/jquery/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 <script src="<?php echo e(asset('lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')); ?>"></script>

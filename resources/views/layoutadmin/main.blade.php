@@ -10,6 +10,12 @@
 <link rel="stylesheet" href="{{ asset('lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
 
+<link rel="stylesheet" href="{{ asset('pesantren/css/adminlte.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ asset('pesantren/css/all.min.css')}}">
+<!-- My Style -->
+<link rel="stylesheet" href="{{ asset('pesantren/css/profiluser.css')}}">
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -33,8 +39,20 @@
   <aside class="control-sidebar control-sidebar-dark">
   </aside>
 
- @yield('footer')
+  {{-- <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
+    </div>
+  </footer> --}}
+  @yield('kontenprofil')
 </div>
+<script src="{{ asset('pesantren/js/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('pesantren/js/bootstrap.bundle.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('pesantren/js/adminlte.min.js')}}"></script>
 <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>

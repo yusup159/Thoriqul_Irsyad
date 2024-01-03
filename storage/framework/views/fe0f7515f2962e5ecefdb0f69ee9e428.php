@@ -19,6 +19,14 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
+          <a href="<?php echo e(route('datauser/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('datauser/admin') ? 'active' : ''); ?>">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                  Data User
+              </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?php echo e(route('dashboard/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard/admin') ? 'active' : ''); ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>

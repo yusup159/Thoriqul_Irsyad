@@ -1,67 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Profil Pengguna</title>
-    <!-- Tambahkan link CSS Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Gaya khusus untuk profil */
-        .profile-container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin-top: 50px;
-        }
-
-        .profile-picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-        }
-
-        .profile-picture img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-info {
-            text-align: center;
-        }
-
-        .profile-info h2 {
-            margin-bottom: 10px;
-        }
-
-        .profile-info p {
-            color: #666;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="profile-container">
-        <div class="profile-picture">
-            <img src="https://placekitten.com/150/150" alt="Profil Picture">
-        </div>
-        <div class="profile-info">
-            <h2>Nama Pengguna</h2>
-            <p>Email: user@example.com</p>
-            <p>Lokasi: Kota Anda</p>
-            <p>Deskripsi singkat tentang pengguna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+@extends('layoutadmin.main')
+@section('atassidebar')
+<div class="brand-link">
+    <img src="{{ asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <p>Thoriqul Irsyad</p>
+</div>
+@endsection
+@section('sidebar')
+<div class="sidebar">
+  <a href="{{ route('profil/admin') }}">
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+    <div class="image">
+      <img src="{{ asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus)) }}" alt="User Image" class="img-circle elevation-2" style="width: 70px; height: 70px; object-fit: cover;">
+    </div>
+    <div class="info ml-3">
+      <h6 class="d-block">{{ Auth::user()->name }}</h6>
+    </div>
+  </div>
+  </a>
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Dashboard
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('datakegiatan/admin') }}" class="nav-link {{ request()->routeIs('datakegiatan/admin') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                  Kegiatan
+              </p>
+          </a>
+      </li>
+      
+        <li class="nav-item">
+            <a href="{{ route('databerita/admin') }}" class="nav-link {{ request()->routeIs('databerita/admin') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-columns"></i>
+                <p>
+                 Berita
+                </p>
+              </a>
+        </li>
+      </ul>
+    </nav>
+  </div>  
+@endsection
+@section('navbarcontent')
+<nav class="main-header navbar navbar-expand navbar-dark">
+    <ul class="navbar-nav ml-auto">  
+      <li class="nav-item">
+        <a class="nav-link"  href="{{ route('logout') }}" role="button">
+            Logout
+        </a>
+      </li>
+    </ul>
+  </nav>
+@endsection
+@section('kontenprofil')
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Profil Mahasiswa</h1>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Tambahkan script Bootstrap JS (opsional, tergantung kebutuhan) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg">
+                    <div class="donasi">
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          {{ session('success') }}
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        @endif
+                        @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <ul>
+                            @foreach ($errors->all() as $item)
+                            <li>{{$item}}</li>
+                                
+                            @endforeach
+                          </ul>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        @endif
+                        <form action="{{ route('updateprofil/admin', ['id' => Auth::user()->id]) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img class="profile mb-3" src="{{ asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus)) }}" alt=""><br>
+                                            <div class="form-group">
+                                                <label for="foto">Foto</label>
+                                                <input class="form-control" type="file" name="fotopengururs" id="foto" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="name">Username</label>
+                                                <input class="form-control" type="text" name="name" id="username" value="{{ Auth::user()->name }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input class="form-control" type="email" name="email" id="email" value="{{ Auth::user()->email }}" placeholder="Alamat Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="password_lama">Password Lama</label>
+                                                <input class="form-control" type="password" name="password_lama" id="old_password" placeholder="Password Lama">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="password_baru">Password Baru</label>
+                                                <input class="form-control" type="password" name="password_baru" id="new_password" placeholder="Password Baru">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="password_baru_confirmation">Password Baru</label>
+                                                <input class="form-control" type="password" name="password_baru_confirmation" id="new_password" placeholder="Password Baru">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-simpan" type="submit">Edit Data</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</div>
+@endsection
