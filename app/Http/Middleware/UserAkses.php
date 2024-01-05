@@ -11,13 +11,16 @@ class UserAkses
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
-    public function handle(Request $request, Closure $next ,$role_id): Response
+    public function handle(Request $request, Closure $next, ...$allowedRoles): Response
     {
-        if(auth()->user()->role_id == $role_id){
-        return $next($request);
+        $userRole = auth()->user()->role_id;
+
+        if (in_array($userRole, $allowedRoles)) {
+            return $next($request);
         }
-        return response()->json(['Anda Tidak Bisa Mengakses Halaman Ini']);
+
+        return response()->json(['error' => 'Anda Tidak Bisa Mengakses Halaman Ini'], 403);
     }
 }

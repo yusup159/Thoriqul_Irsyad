@@ -8,7 +8,13 @@
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="{{ asset('pesantren/css/index.css')}}">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
 </head>
 
 <body>
@@ -28,23 +34,20 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
                     <!-- Tambahkan class text-center di sini -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Beranda</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./profil.html">Profil & Sejarah</a>
+                        <a class="nav-link" href="{{ route('profil') }}">Profil & Sejarah</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./news.html">Portal Berita</a>
+                        <a class="nav-link" href="{{ route('berita') }}">Portal Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./kegiatan.html">Kegiatan</a>
+                        <a class="nav-link" href="{{ route('kegiatan') }}">Kegiatan</a>
                     </li>
 
                 </ul>
-                <a href="./option.html">
-                    <button class="btn btn-light btn-masuk">
-                        <img src="./asset/icon/user.svg" alt="Password Icon" class="input-icon">
-                        Masuk Sebagai Admin</button></a>
+              
             </div>
         </div>
     </nav>
@@ -62,12 +65,12 @@
                         untuk bangsa.</p>
                     <a href="#">
                         <button class="btn-ppdb">
-                            <img src="./asset/icon/arrow.svg" alt="">Lihat Profil & Sejarah
+                            <img src="{{ asset('pesantren/asset/icon/arrow.svg')}}" alt="">Lihat Profil & Sejarah
                         </button>
                     </a>
                 </div>
                 <div class="col-lg-5 hero-kanan mt-6">
-                    <img src="./asset/img/heroKanan.jpg" alt="">
+                    <img src="{{ asset('pesantren/asset/img/heroKanan.jpg')}}" alt="">
                 </div>
             </div>
         </div>
@@ -81,25 +84,66 @@
         <div class="container-fluid">
             <div class="header text-center">
                 <h3>Berpengalaman & Berdedikasi tinggi</h3>
-                <h1>Para Pengasuh Pondok<br>Pesantren</h1>
+                <h1> Pengasuh dan Pengurus<br>Pondok Pesantren</h1>
             </div>
             <!-- Slider Code -->
-            <div class="slider-container">
-                <div class="slider-wrapper">
-                    <div class="slide">
-                        <img src="./asset/img/usttads/Adi.svg" alt="Slide 3">
+           <!-- Slider Code -->
+<div class="slider-container">
+    <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="card rounded">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+                        <div class="image">
+                            <img src="{{ asset('pesantren/asset/img/download.jpeg')}}" alt="User Image" class="img-circle elevation-2" style="width: 100px; height: 100px; object-fit: cover;">
+                        </div>
+                        <div class="info ml-3">
+                            <h6 class="d-block">yuo</h6>
+                            
+                        </div>
+                       
                     </div>
-                    <div class="slide">
-                        <img src="./asset/img/usttads/Felix.svg" alt="Slide 1">
-                    </div>
-                    <div class="slide">
-                        <img src="./asset/img/usttads/Gus Iqdam.svg" alt="Slide 2">
-                    </div>
-                    <div class="slide">
-                        <img src="./asset/img/usttads/Hanan Ataki.svg" alt="Slide 3">
-                    </div>
+                    <p>dfjdb</p>
                 </div>
             </div>
+            <div class="swiper-slide">
+                <div class="card rounded">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+                        <div class="image">
+                            <img src="{{ asset('pesantren/asset/img/download.jpeg')}}" alt="User Image" class="img-circle elevation-2" style="width: 100px; height: 100px; object-fit: cover;">
+                        </div>
+                        <div class="info ml-3">
+                            <h6 class="d-block">yuo</h6>
+                            
+                        </div>
+                       
+                    </div>
+                    <p>dfjdb</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="card rounded">
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
+                        <div class="image">
+                            <img src="{{ asset('pesantren/asset/img/download.jpeg')}}" alt="User Image" class="img-circle elevation-2" style="width: 100px; height: 100px; object-fit: cover;">
+                        </div>
+                        <div class="info ml-3">
+                            <h6 class="d-block">yuo</h6>
+                            
+                        </div>
+                       
+                    </div>
+                    <p>dfjdb</p>
+                </div>
+            </div>
+        </div>
+
+     
+    </div>
+</div>
+
         </div>
     </div>
     <!-- End Partnership -->
@@ -114,7 +158,7 @@
             <div class="row">
                 <div class="card col-lg-4 mb-3">
                     <a href="#">
-                        <img src="./asset/img/27da5d0dc1a280ab5b29b1429b8a68f6.jpeg" class="card-img-top" alt="...">
+                        <img src="{{ asset('pesantren/asset/img/27da5d0dc1a280ab5b29b1429b8a68f6.jpeg')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Dokumentasi Kegiatan Ahad Pagi</h5>
                             <p>Kegiatan ahad pagi tanggal 29 November 2023 di isi oleh pemateri Ustadz Sadam Husein dan
@@ -125,7 +169,7 @@
                 </div>
                 <div class="card col-lg-4 mb-3">
                     <a href="#">
-                        <img src="./asset/img/27da5d0dc1a280ab5b29b1429b8a68f6.jpeg" class="card-img-top" alt="...">
+                        <img src="{{ asset('pesantren/asset/img/27da5d0dc1a280ab5b29b1429b8a68f6.jpeg')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Dokumentasi Kegiatan Ahad Pagi</h5>
                             <p>Kegiatan ahad pagi tanggal 29 November 2023 di isi oleh pemateri Ustadz Sadam Husein dan
@@ -136,7 +180,7 @@
                 </div>
                 <div class="card col-lg-4 mb-3">
                     <a href="#">
-                        <img src="./asset/img/27da5d0dc1a280ab5b29b1429b8a68f6.jpeg" class="card-img-top" alt="...">
+                        <img src="{{ asset('pesantren/asset/img/27da5d0dc1a280ab5b29b1429b8a68f6.jpeg')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Dokumentasi Kegiatan Ahad Pagi</h5>
                             <p>Kegiatan ahad pagi tanggal 29 November 2023 di isi oleh pemateri Ustadz Sadam Husein dan
@@ -161,14 +205,10 @@
                     </h1>
                     <p>Bantu ulas kami untuk membantu kami dalam memberikan yang terbaik untuk santri santri kami
                         selanjutnya</p>
-                    <a href="#">
-                        <button class="btn-ppdb">
-                            <img src="./asset/icon/arrow.svg" alt="">Ulas Kami
-                        </button>
-                    </a>
+                   
                 </div>
-                <div class="col-lg-5 hero-kanan-review mt-6">
-                    <img src="#" alt="">
+                <div class="col-lg-5 hero-kanan-review" style="margin-top: 30px; margin-bottom: 30px;">
+                    <img src="{{ asset('pesantren/asset/img/27da5d0dc1a280ab5b29b1429b8a68f6.jpeg')}}" style="width: 600px; height: 420px;">
                 </div>
             </div>
         </div>
@@ -210,7 +250,37 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Tambahkan link Bootstrap Icons (BI) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module">
+        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+      
+        const swiper = new Swiper('.swiper', {
+  direction: 'horizontal',
+  loop: true,
+  autoplay: {
+    delay: 2000,
+  },
+  effect: 'coverflow', // Ganti efek menjadi coverflow
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 'auto',
+  coverflowEffect: {
+    rotate: 50, // Sudut rotasi kartu
+    stretch: 0, // Jarak antar kartu
+    depth: 100, // Kedalaman kartu
+    modifier: 1, // Modifikasi efek
+  },
+  pagination: {
+    el: '.swiper-pagination',
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
+
+      </script>
 </body>
 
 </html>

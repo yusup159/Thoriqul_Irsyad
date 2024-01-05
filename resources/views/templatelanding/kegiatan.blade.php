@@ -8,7 +8,7 @@
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/kegiatan.css">
+    <link rel="stylesheet" href="{{ asset('pesantren/css/kegiatan.css')}}">
 </head>
 
 <body>
@@ -28,23 +28,20 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
                     <!-- Tambahkan class text-center di sini -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Beranda</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./profil.html">Profil & Sejarah</a>
+                        <a class="nav-link" href="{{ route('profil') }}">Profil & Sejarah</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./news.html">Portal Berita</a>
+                        <a class="nav-link" href="{{ route('berita') }}">Portal Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./kegiatan.html">Kegiatan</a>
+                        <a class="nav-link" href="{{ route('kegiatan') }}">Kegiatan</a>
                     </li>
 
                 </ul>
-                <a href="./option.html">
-                    <button class="btn btn-light btn-masuk">
-                        <img src="./asset/icon/user.svg" alt="Password Icon" class="input-icon">
-                        Masuk Sebagai Admin</button></a>
+            
             </div>
         </div>
     </nav>
@@ -59,9 +56,9 @@
                         Kegiatan Rutin Pondok Pesantren ABC
                     </h1>
                     <p>Informasi lengkap mengenai kegiatan dan program kerja pondok pesantren ABC</p>
-                    <a href="#">
-                        <button class="btn-ppdb">
-                            <img src="./asset/icon/arrow.svg" alt="">Daftar Kegiatan
+                    <a href="#isikegiatan">
+                        <button class="btn-ppdb" >
+                            <img src="{{ asset('pesantren/asset/icon/arrow.svg')}}" alt="">Daftar Kegiatan
                         </button>
                     </a>
                 </div>
@@ -72,48 +69,30 @@
     <!-- End Hero -->
 
     <!-- Card -->
-    <div class="container">
+    <div class="container" id="isikegiatan">
         <div class="kegiatan">
             <h3>Kegiatan Rutin</h3>
             <h1>Agenda Rutin Pondok Pesantren ABC</h1>
         </div>
         <div class="bungkus-kegiatan">
             <div class="row">
+                @foreach($kegiatan as $key => $kgtn)
                 <div class="card col-lg-4 mb-3">
                     <a href="./detailKegiatan.html">
-                        <img src="./asset/img/42a35505dabe860dcdeb51f92d5be768_XL.jpg" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/fotokegiatan/' . basename($kgtn->fotokegiatan)) }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Pengajian Rutin</h5>
+                            <h5 class="card-title">{{ $kgtn->judul }}</h5>
                             <p>Kegiatan pengajian rutin sering sekali diadakan oleh pondok pesantren ABC. Fungsinya
                                 adalah
                             </p>
                         </div>
                     </a>
                 </div>
-                <div class="card col-lg-4 mb-3">
-                    <a href="./detailKegiatan.html">
-                        <img src="./asset/img/muhammad-azzam-xLoEfZxoGh4-unsplash.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Ziarah Makam</h5>
-                            <p>Agar para santri juga mengetahui asal muasal pesantren, santri juga di
-                                agendakan untuk selalu...
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="card col-lg-4 mb-3">
-                    <a href="./detailKegiatan.html">
-                        <img src="./asset/img/27da5d0dc1a280ab5b29b1429b8a68f6.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Kegiatan Outbound</h5>
-                            <p>Dalam rangka agar saling mengenal satu sama lain pondok juga
-                                memiliki agenda kegiatan outbound...
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                @endforeach
+                
             </div>
         </div>
+        {{ $kegiatan->withQueryString()->links('pagination::bootstrap-5') }}
     </div>
     </div>
     <!-- Card -->

@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('atassidebar'); ?>
 <div class="brand-link">
     <img src="<?php echo e(asset('lte/dist/img/AdminLTELogo.png')); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -7,14 +6,17 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('sidebar'); ?>
 <div class="sidebar">
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+  <a href="<?php echo e(route('profil/admin')); ?>">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
       <div class="image">
-        <img src="<?php echo e(asset('lte/dist/img/user2-160x160.jpg')); ?>" class="img-circle elevation-2" alt="User Image">
+        <img src="<?php echo e(asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus))); ?>" alt="User Image" class="img-circle elevation-2" style="width: 70px; height: 70px; object-fit: cover;">
       </div>
-      <div class="info">
+      <div class="info ml-3">
         <h6 class="d-block"><?php echo e(Auth::user()->name); ?></h6>
       </div>
     </div>
+  </a>
+  
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
@@ -26,7 +28,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo e(route('datakegiatan/pengurus')); ?>" class="nav-link <?php echo e(request()->routeIs('datakegiatan/pengurus') ? 'active' : ''); ?>">
+          <a href="<?php echo e(route('datakegiatan/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('datakegiatan/admin') ? 'active' : ''); ?>">
               <i class="nav-icon fas fa-th"></i>
               <p>
                   Kegiatan
@@ -35,7 +37,7 @@
       </li>
       
         <li class="nav-item">
-            <a href="<?php echo e(route('databerita/pengurus')); ?>" class="nav-link <?php echo e(request()->routeIs('databerita/pengurus') ? 'active' : ''); ?>">
+            <a href="<?php echo e(route('databerita/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('databerita/admin') ? 'active' : ''); ?>">
                 <i class="nav-icon fas fa-columns"></i>
                 <p>
                  Berita

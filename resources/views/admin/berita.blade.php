@@ -20,6 +20,7 @@
   
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        @if(auth()->user()->role_id != 2)
         <li class="nav-item">
           <a href="{{ route('datauser/admin') }}" class="nav-link {{ request()->routeIs('datauser/admin') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
@@ -28,14 +29,19 @@
               </p>
           </a>
         </li>
+        @endif
         <li class="nav-item">
-          <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-            </p>
+          @if(auth()->user()->role_id == 2)
+              <a href="{{ route('dashboard/pengurus') }}" class="nav-link {{ request()->routeIs('dashboard/pengurus') ? 'active' : '' }}">
+          @else
+              <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
+          @endif
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                  Dashboard
+              </p>
           </a>
-        </li>
+      </li> 
         <li class="nav-item">
           <a href="{{ route('datakegiatan/admin') }}" class="nav-link {{ request()->routeIs('datakegiatan/admin') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
@@ -82,9 +88,13 @@
           @endif
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Berita Admin</h1>
-                    </div>
+                  <div class="col-sm-6">
+                    @if(auth()->user()->role_id == 2)
+                    <h1 class="m-0">Data Berita</h1>
+                    @else
+                      <h1 class="m-0">Berita Admin</h1>
+                    @endif
+                  </div>
                     <div class="col-sm-6 text-right">
                       
                       <a href="{{ route('tambahberita/admin') }}" class="btn btn-primary">Tambah Berita</a>
@@ -95,34 +105,43 @@
         <section class="content">
             <table class="table table-bordered">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th style="width: 10px">No</th>
                         <th>Judul</th>
-                        <th>UserID</th>
+                        @if(auth()->user()->role_id != 2)
+                        <th>Pembuat</th>
+                        @endif
                         <th>Foto</th>
-                        <th>Tanggal</th>
+                        <th>Tanggal Pembuatan</th>
+                        @if(auth()->user()->role_id != 2)
                         <th>Created_at</th>
                         <th>Update_at</th>
+                        @endif
                         <th colspan="3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($berita as $key => $berita)
+                    @foreach($berita as $key => $brt)
                         <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $berita->judul }}</td>
-                            <td>{{ $berita->user_id }}</td>
-                            <td><img src="{{ asset('storage/fotoberita/' . basename($berita->fotoberita)) }}" style="width: 70px; height: 70px; "></td>
-                            <td>{{ $berita->tanggal }}</td>
-                            <td>{{ $berita->created_at }}</td>
-                            <td>{{ $berita->updated_at }}</td>
-                            <td><a href="{{ route('showberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-secondary">Lihat</a></td>
-                            <td><a href="{{ route('editberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
-                            <td><a href="{{ route('deleteberita/admin', ['id' => $berita->id]) }}" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
+                          <td>{{ $berita->firstItem() + $loop->index }}</td>
+                            <td>{{ $brt->judul }}</td>
+                            @if(auth()->user()->role_id != 2)
+                            <td>{{ $brt->user->name }}</td>
+                            @endif
+                            <td><img src="{{ asset('storage/fotoberita/' . basename($brt->fotoberita)) }}" style="width: 140px; height: 100px; "></td>
+                            <td>{{ \Carbon\Carbon::parse($brt->tanggal)->format('j F Y') }}</td>
+                            @if(auth()->user()->role_id != 2)
+                            <td>{{ $brt->created_at }}</td>
+                            <td>{{ $brt->updated_at }}</td>
+                            @endif
+                            <td><a href="{{ route('showberita/admin', ['id' => $brt->id]) }}" type="button" class="btn btn-secondary">Lihat</a></td>
+                            <td><a href="{{ route('editberita/admin', ['id' => $brt->id]) }}" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
+                            <td><a href="{{ route('deleteberita/admin', ['id' => $brt->id]) }}" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $berita->withQueryString()->links('pagination::bootstrap-5') }}
         </section>
     </div>
 @endsection

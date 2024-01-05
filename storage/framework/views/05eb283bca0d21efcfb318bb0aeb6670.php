@@ -19,6 +19,7 @@
   
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <?php if(auth()->user()->role_id != 2): ?>
         <li class="nav-item">
           <a href="<?php echo e(route('datauser/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('datauser/admin') ? 'active' : ''); ?>">
               <i class="nav-icon fas fa-th"></i>
@@ -27,14 +28,19 @@
               </p>
           </a>
         </li>
+        <?php endif; ?>
         <li class="nav-item">
-          <a href="<?php echo e(route('dashboard/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard/admin') ? 'active' : ''); ?>">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-            </p>
+          <?php if(auth()->user()->role_id == 2): ?>
+              <a href="<?php echo e(route('dashboard/pengurus')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard/pengurus') ? 'active' : ''); ?>">
+          <?php else: ?>
+              <a href="<?php echo e(route('dashboard/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('dashboard/admin') ? 'active' : ''); ?>">
+          <?php endif; ?>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                  Dashboard
+              </p>
           </a>
-        </li>
+      </li>      
         <li class="nav-item">
           <a href="<?php echo e(route('datakegiatan/admin')); ?>" class="nav-link <?php echo e(request()->routeIs('datakegiatan/admin') ? 'active' : ''); ?>">
               <i class="nav-icon fas fa-th"></i>
@@ -83,7 +89,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
+                      <?php if(auth()->user()->role_id == 2): ?>
+                      <h1 class="m-0">Data Kegiatan</h1>
+                      <?php else: ?>
                         <h1 class="m-0">Kegiatan Admin</h1>
+                      <?php endif; ?>
                     </div>
                     <div class="col-sm-6 text-right">
                       
@@ -93,36 +103,49 @@
             </div>
         </div>
         <section class="content">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th style="width: 10px">No</th>
-                        <th>Judul</th>
-                        <th>UserID</th>
-                        <th>Foto</th>
-                        <th>Tanggal</th>
+          <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th style="width: 10px">No</th>
+                    <th>Judul Kegiatan</th>
+                    <?php if(auth()->user()->role_id != 2): ?>
+                    <th>Pembuat</th>
+                    <?php endif; ?>
+                    <th>Foto</th>
+                    <th>Tanggal Pembuatan</th>
+                    <?php if(auth()->user()->role_id != 2): ?>
                         <th>Created_at</th>
                         <th>Update_at</th>
-                        <th colspan="3">Aksi</th>
+                    <?php endif; ?>
+                    <th colspan="3">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $__currentLoopData = $kegiatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $kgtn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                      <td><?php echo e($kegiatan->firstItem() + $loop->index); ?></td>
+                        <td><?php echo e($kgtn->judul); ?></td>
+                        <?php if(auth()->user()->role_id != 2): ?>
+                        <td><?php echo e($kgtn->user->name); ?></td>
+                        <?php endif; ?>
+                        <td><img src="<?php echo e(asset('storage/fotokegiatan/' . basename($kgtn->fotokegiatan))); ?>" style="width: 140px; height: 100px; "></td>
+                        <td><?php echo e(\Carbon\Carbon::parse($kgtn->tanggal)->format('j F Y')); ?></td>
+                        <?php if(auth()->user()->role_id != 2): ?>
+                            <td><?php echo e($kgtn->created_at); ?></td>
+                            <td><?php echo e($kgtn->updated_at); ?></td>
+                        <?php endif; ?>
+                        <td><a href="<?php echo e(route('showkegiatan/admin', ['id' => $kgtn->id])); ?>" type="button" class="btn btn-secondary">Lihat</a></td>
+                        <td><a href="<?php echo e(route('editkegiatan/admin', ['id' => $kgtn->id])); ?>" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
+                        <td><a href="<?php echo e(route('deletekegiatan/admin', ['id' => $kgtn->id])); ?>" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php $__currentLoopData = $kegiatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $kegiatan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <tr>
-                            <td><?php echo e($key + 1); ?></td>
-                            <td><?php echo e($kegiatan->judul); ?></td>
-                            <td><?php echo e($kegiatan->user_id); ?></td>
-                            <td><img src="<?php echo e(asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan))); ?>" style="width: 70px; height: 70px; "></td>
-                            <td><?php echo e($kegiatan->tanggal); ?></td>
-                            <td><?php echo e($kegiatan->created_at); ?></td>
-                            <td><?php echo e($kegiatan->updated_at); ?></td>
-                            <td><a href="<?php echo e(route('showkegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-secondary">Lihat</a></td>
-                            <td><a href="<?php echo e(route('editkegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
-                            <td><a href="<?php echo e(route('deletekegiatan/admin', ['id' => $kegiatan->id])); ?>" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
-                        </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
-            </table>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </tbody>
+        </table>
+        <?php echo e($kegiatan->withQueryString()->links('pagination::bootstrap-5')); ?>
+
+
+
+
         </section>
     </div>
 <?php $__env->stopSection(); ?>

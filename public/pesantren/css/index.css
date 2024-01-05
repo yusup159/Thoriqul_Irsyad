@@ -195,9 +195,12 @@ body{
 
     .slider-wrapper {
       display: flex;
-      animation: scroll 300s linear infinite;
+      animation: scroll 30s linear infinite;
     }
-
+    .swiper {
+        width: 600px;
+        height: 200px;
+      }
     .slide {
       min-width: 500px;
       height: 250px;
@@ -241,7 +244,8 @@ body{
 /* Review */
 .review{
     height: 500px;
-    background-image: url(../asset/img/reviewAlumni.png);
+     background-color: #1D7952;
+
     background-size: cover;
     margin-top: 100px;
 }

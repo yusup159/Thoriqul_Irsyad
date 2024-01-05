@@ -92,6 +92,7 @@ class KegiatanController extends Controller
             'judul' => $request->input('judul'),
             'deskripsi' => $deskripsi,
             'fotokegiatan' => $fotoPath,
+            'user_id'=>Auth::user()->id,
         ]);        
         return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil ubah!');
     }

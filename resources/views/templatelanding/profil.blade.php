@@ -8,7 +8,7 @@
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/profil.css">
+    <link rel="stylesheet" href="{{ asset('pesantren/css/profil.css')}}">
 </head>
 
 <body>
@@ -28,23 +28,19 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
                     <!-- Tambahkan class text-center di sini -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Beranda</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./profil.html">Profil & Sejarah</a>
+                        <a class="nav-link" href="{{ route('profil') }}">Profil & Sejarah</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./news.html">Portal Berita</a>
+                        <a class="nav-link" href="{{ route('berita') }}">Portal Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./kegiatan.html">Kegiatan</a>
+                        <a class="nav-link" href="{{ route('kegiatan') }}">Kegiatan</a>
                     </li>
 
                 </ul>
-                <a href="./option.html">
-                    <button class="btn btn-light btn-masuk">
-                        <img src="./asset/icon/user.svg" alt="Password Icon" class="input-icon">
-                        Masuk Sebagai Admin</button></a>
             </div>
         </div>
     </nav>
@@ -60,14 +56,14 @@
                         Berdidikasi dan berpengalaman dalam hal pendidikan
                     </h1>
                     <p>Senantiasa mencetak generasi islam yang bertakwa & berbudi pekerti luhur</p>
-                    <a href="#">
+                    <a href="#kontensejarah">
                         <button class="btn-ppdb">
-                            <img src="./asset/icon/arrow.svg" alt="">Kenali Kami
+                            <img src="{{ asset('pesantren/asset/icon/arrow.svg')}}" alt="">Kenali Kami
                         </button>
                     </a>
                 </div>
                 <div class="col-lg-5 hero-kanan m-6">
-                    <img class="foto" src="./asset/img/profilBanner.png" alt="">
+                    <img class="foto" src="{{ asset('pesantren/asset/img/profilBanner.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -75,14 +71,14 @@
     <!-- End Hero -->
 
     <!-- Content  -->
-    <div class="container content">
+    <div class="container content" id="kontensejarah">
         <div class="header text-center">
             <h1>Menjadi Wadah Para Santri Dalam Hal Menimba Ilmu Agama Islam</h1>
         </div>
         <div class="content-1">
             <div class="row">
                 <div class="col-lg-6 content-kiri">
-                    <img src="./asset/img/konten.jpg" alt="">
+                    <img src="{{ asset('pesantren/asset/img/konten.jpg')}}" alt="">
                 </div>
                 <div class="col-lg-6 content-kanan mt-5">
                     <h1>
@@ -107,7 +103,7 @@
                     </p>
                 </div>
                 <div class="col-lg-6 content-kanan mt-5 order-xs-first">
-                    <img src="./asset/img/heroKanan.jpg" alt="">
+                    <img src="{{ asset('pesantren/asset/img/heroKanan.jpg')}}" alt="">
                 </div>
             </div>
         </div>
@@ -126,17 +122,17 @@
             <div class="content-pilar text-center">
                 <div class="row">
                     <div class="col-lg-4">
-                        <img src="./asset/icon/iconToga.svg" alt="">
+                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg')}}" alt="">
                         <h3>Berilmu</h3>
                         <p>Menjadikan santri menjadi pribadi yang berilmu dan berwawasan</p>
                     </div>
                     <div class="col-lg-4">
-                        <img src="./asset/icon/iconToga.svg" alt="">
+                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg')}}" alt="">
                         <h3>Bertakwa</h3>
                         <p>Menjadikan santri bertakwa kepada Allah SWT</p>
                     </div>
                     <div class="col-lg-4">
-                        <img src="./asset/icon/iconToga.svg" alt="">
+                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg')}}" alt="">
                         <h3>Berbudi pekerti</h3>
                         <p>Menjadikan santri menjadi pribadi yang memiliki budi pekerti luhur</p>
                     </div>

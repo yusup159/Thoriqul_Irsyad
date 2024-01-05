@@ -20,6 +20,7 @@
   
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        @if(auth()->user()->role_id != 2)
         <li class="nav-item">
           <a href="{{ route('datauser/admin') }}" class="nav-link {{ request()->routeIs('datauser/admin') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
@@ -28,14 +29,19 @@
               </p>
           </a>
         </li>
+        @endif
         <li class="nav-item">
-          <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-            </p>
+          @if(auth()->user()->role_id == 2)
+              <a href="{{ route('dashboard/pengurus') }}" class="nav-link {{ request()->routeIs('dashboard/pengurus') ? 'active' : '' }}">
+          @else
+              <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
+          @endif
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                  Dashboard
+              </p>
           </a>
-        </li>
+      </li>      
         <li class="nav-item">
           <a href="{{ route('datakegiatan/admin') }}" class="nav-link {{ request()->routeIs('datakegiatan/admin') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
@@ -83,7 +89,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
+                      @if(auth()->user()->role_id == 2)
+                      <h1 class="m-0">Data Kegiatan</h1>
+                      @else
                         <h1 class="m-0">Kegiatan Admin</h1>
+                      @endif
                     </div>
                     <div class="col-sm-6 text-right">
                       
@@ -93,36 +103,48 @@
             </div>
         </div>
         <section class="content">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th style="width: 10px">No</th>
-                        <th>Judul</th>
-                        <th>UserID</th>
-                        <th>Foto</th>
-                        <th>Tanggal</th>
+          <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th style="width: 10px">No</th>
+                    <th>Judul Kegiatan</th>
+                    @if(auth()->user()->role_id != 2)
+                    <th>Pembuat</th>
+                    @endif
+                    <th>Foto</th>
+                    <th>Tanggal Pembuatan</th>
+                    @if(auth()->user()->role_id != 2)
                         <th>Created_at</th>
                         <th>Update_at</th>
-                        <th colspan="3">Aksi</th>
+                    @endif
+                    <th colspan="3">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($kegiatan as $key => $kgtn)
+                    <tr>
+                      <td>{{ $kegiatan->firstItem() + $loop->index }}</td>
+                        <td>{{ $kgtn->judul }}</td>
+                        @if(auth()->user()->role_id != 2)
+                        <td>{{ $kgtn->user->name }}</td>
+                        @endif
+                        <td><img src="{{ asset('storage/fotokegiatan/' . basename($kgtn->fotokegiatan)) }}" style="width: 140px; height: 100px; "></td>
+                        <td>{{ \Carbon\Carbon::parse($kgtn->tanggal)->format('j F Y') }}</td>
+                        @if(auth()->user()->role_id != 2)
+                            <td>{{ $kgtn->created_at }}</td>
+                            <td>{{ $kgtn->updated_at }}</td>
+                        @endif
+                        <td><a href="{{ route('showkegiatan/admin', ['id' => $kgtn->id]) }}" type="button" class="btn btn-secondary">Lihat</a></td>
+                        <td><a href="{{ route('editkegiatan/admin', ['id' => $kgtn->id]) }}" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
+                        <td><a href="{{ route('deletekegiatan/admin', ['id' => $kgtn->id]) }}" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach($kegiatan as $key => $kegiatan)
-                        <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $kegiatan->judul }}</td>
-                            <td>{{ $kegiatan->user_id }}</td>
-                            <td><img src="{{ asset('storage/fotokegiatan/' . basename($kegiatan->fotokegiatan)) }}" style="width: 70px; height: 70px; "></td>
-                            <td>{{ $kegiatan->tanggal }}</td>
-                            <td>{{ $kegiatan->created_at }}</td>
-                            <td>{{ $kegiatan->updated_at }}</td>
-                            <td><a href="{{ route('showkegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-secondary">Lihat</a></td>
-                            <td><a href="{{ route('editkegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-success" onclick="return confirm('Yakin Akan Mengubah Data Ini?')">Edit</a></td>
-                            <td><a href="{{ route('deletekegiatan/admin', ['id' => $kegiatan->id]) }}" type="button" class="btn btn-danger" onclick="return confirm('Yakin Akan Menghapus Data Ini?')">Hapus</a></td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                @endforeach
+            </tbody>
+        </table>
+        {{ $kegiatan->withQueryString()->links('pagination::bootstrap-5') }}
+
+
+
         </section>
     </div>
 @endsection

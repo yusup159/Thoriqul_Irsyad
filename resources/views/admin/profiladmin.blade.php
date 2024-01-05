@@ -19,14 +19,28 @@
   </a>
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        @if(auth()->user()->role_id != 2)
         <li class="nav-item">
-          <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-            </p>
+          <a href="{{ route('datauser/admin') }}" class="nav-link {{ request()->routeIs('datauser/admin') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                  Data User
+              </p>
           </a>
-        </li>
+      </li>
+      @endif
+        <li class="nav-item">
+            @if(auth()->user()->role_id == 2)
+                <a href="{{ route('dashboard/pengurus') }}" class="nav-link {{ request()->routeIs('dashboard/pengurus') ? 'active' : '' }}">
+            @else
+                <a href="{{ route('dashboard/admin') }}" class="nav-link {{ request()->routeIs('dashboard/admin') ? 'active' : '' }}">
+            @endif
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Dashboard
+                </p>
+            </a>
+        </li>   
         <li class="nav-item">
           <a href="{{ route('datakegiatan/admin') }}" class="nav-link {{ request()->routeIs('datakegiatan/admin') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
@@ -65,7 +79,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Profil Mahasiswa</h1>
+                    <h1 class="m-0">Profil Pengguna</h1>
                 </div>
             </div>
         </div>
@@ -97,62 +111,75 @@
                         </div>
                         @endif
                         <form action="{{ route('updateprofil/admin', ['id' => Auth::user()->id]) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <img class="profile mb-3" src="{{ asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus)) }}" alt=""><br>
-                                            <div class="form-group">
-                                                <label for="foto">Foto</label>
-                                                <input class="form-control" type="file" name="fotopengururs" id="foto" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="name">Username</label>
-                                                <input class="form-control" type="text" name="name" id="username" value="{{ Auth::user()->name }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input class="form-control" type="email" name="email" id="email" value="{{ Auth::user()->email }}" placeholder="Alamat Email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="password_lama">Password Lama</label>
-                                                <input class="form-control" type="password" name="password_lama" id="old_password" placeholder="Password Lama">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="password_baru">Password Baru</label>
-                                                <input class="form-control" type="password" name="password_baru" id="new_password" placeholder="Password Baru">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="password_baru_confirmation">Password Baru</label>
-                                                <input class="form-control" type="password" name="password_baru_confirmation" id="new_password" placeholder="Password Baru">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-simpan" type="submit" onclick="return confirm('Yakin Akan Mengubah Data Profil?')">Edit Data</button>
-                                </div>
-                            </div>
-                        </form>
+                          @csrf
+                          <div class="row">
+                              <div class="col">
+                                  <div class="row">
+                                      <div class="col">
+                                          <img class="profile mb-3" src="{{ asset('storage/fotopengurus/' . basename(Auth::user()->fotopengurus)) }}" alt=""><br>
+                                          <div class="form-group">
+                                              <label for="foto">Foto</label>
+                                              <input class="form-control" type="file" name="fotopengururs" id="foto">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col">
+                                          <div class="form-group">
+                                              <label for="name">Username</label>
+                                              <input class="form-control" type="text" name="name" id="username" value="{{ Auth::user()->name }}">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col">
+                                          <div class="form-group">
+                                              <label for="email">Email</label>
+                                              <input class="form-control" type="email" name="email" id="email" value="{{ Auth::user()->email }}" placeholder="Alamat Email">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col">
+                                          <div class="form-group">
+                                              <label for="password_lama">Password Saat ini</label>
+                                              <input class="form-control" type="password" name="password_lama" id="old_password" placeholder="Password Lama">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col">
+                                          <button type="button" class="btn btn-secondary" id="togglePasswordBtn" onclick="togglePasswordForm()">Ubah Password?</button>
+                                      </div>
+                                  </div>
+                                  <div id="passwordForm" style="display: none;">
+                                      <div class="row">
+                                          <div class="col">
+                                              <div class="form-group">
+                                                  <label for="password_baru">Password Baru</label>
+                                                  <input class="form-control" type="password" name="password_baru" id="new_password" placeholder="Password Baru">
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col">
+                                              <div class="form-group">
+                                                  <label for="password_baru_confirmation">Konfirmasi Password Baru</label>
+                                                  <input class="form-control" type="password" name="password_baru_confirmation" id="new_password_confirmation" placeholder="Konfirmasi Password Baru">
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <button class="btn btn-simpan" type="submit" onclick="return confirm('Yakin Akan Mengubah Data Profil?')">Edit Data</button>
+                              </div>
+                          </div>
+                      </form>
+                      
+                      
+                      
+                      
+                      
+                      
                     </div>
                 </div>
             </div>
@@ -160,4 +187,18 @@
     </section>
     
 </div>
+<script>
+  function togglePasswordForm() {
+      var passwordForm = document.getElementById('passwordForm');
+      var togglePasswordBtn = document.getElementById('togglePasswordBtn');
+
+      if (passwordForm.style.display === 'none') {
+          passwordForm.style.display = 'block';
+          togglePasswordBtn.innerHTML = 'Tidak ingin ubah password';
+      } else {
+          passwordForm.style.display = 'none';
+          togglePasswordBtn.innerHTML = 'Ubah Password juga?';
+      }
+  }
+</script>
 @endsection
