@@ -16,14 +16,10 @@
     <!-- Navigasi -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <h5>Logo Pesantren</h5>
+            <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
+                <img src="{{ asset('pesantren/asset/img/logopesantren.png')}}" style="width: 70px; margin-right: 10px;" alt="">
+                <h5 style="margin: 0;">Thoriqul Irsyad</h5>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
                     <!-- Tambahkan class text-center di sini -->
@@ -78,7 +74,7 @@
             <div class="row">
                 @foreach($berita as $key => $berita)
                 <div class="card col-lg-4 mb-3">
-                    <a href="./detailKegiatan.html">
+                    <a href="{{ route('detailberita') }}">
                         <img src="{{ asset('storage/fotoberita/' . basename($berita->fotoberita)) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $berita->judul }}</h5>
@@ -114,7 +110,8 @@
                 <div class="col-md-4">
                     <h5>Sosial Media</h5>
                     <p><a class="link-opacity-100" href="#">Instagram</a></p>
-                    <p><a class="link-opacity-100" href="#">Tiktok</a></p>
+                    <p><a class="link-opacity-100" href="https://youtube.com/@ponpesthoriqulirsyad9284?si=JcXtZp7c-eFBTsY4">Youtube</a></p>
+                
                 </div>
 
                 <!-- Column 3 -->
