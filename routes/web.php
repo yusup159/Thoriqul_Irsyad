@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/databerita/admin', [AdminController::class, 'databeritaadmin'])->name('databerita/admin')->middleware('userAkses:1,2');
     Route::get('/tambahberita/admin', [BeritaController::class, 'tambahberitaadmin'])->name('tambahberita/admin')->middleware('userAkses:1,2');
     Route::post('/prosestambahberita/admin', [BeritaController::class, 'prosestambahberitaadmin'])->name('prosestambahberita/admin')->middleware('userAkses:1,2');
-    Route::get('/showberita/admin/{id}', [BeritaController::class, 'showberitaadmin'])->name('showberita/admin')->middleware('userAkses:1,2');
+    Route::get('showberita/admin/{id}', [BeritaController::class, 'showberitaadmin'])->name('showberita/admin')->middleware('userAkses:1,2');
     Route::get('/editberita/admin/{id}', [BeritaController::class, 'editberitaadmin'])->name('editberita/admin')->middleware('userAkses:1,2');
     Route::post('/proseseditberita/admin/{id}', [BeritaController::class, 'proseseditberitaadmin'])->name('proseseditberita/admin')->middleware('userAkses:1,2');
     Route::get('/deleteberita/admin/{id}', [BeritaController::class, 'deleteberitaadmin'])->name('deleteberita/admin')->middleware('userAkses:1,2');

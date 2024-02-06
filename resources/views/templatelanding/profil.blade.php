@@ -8,7 +8,7 @@
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('pesantren/css/profil.css')}}">
+    <link rel="stylesheet" href="{{ asset('pesantren/css/profil.css') }}">
 </head>
 
 <body>
@@ -17,7 +17,8 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
-                <img src="{{ asset('pesantren/asset/img/logopesantren.png')}}" style="width: 70px; margin-right: 10px;" alt="">
+                <img src="{{ asset('pesantren/asset/img/logopesantren.png') }}" style="width: 70px; margin-right: 10px;"
+                    alt="">
                 <h5 style="margin: 0;">Thoriqul Irsyad</h5>
             </a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
@@ -54,12 +55,12 @@
                     <p>Senantiasa mencetak generasi islam yang bertakwa & berbudi pekerti luhur</p>
                     <a href="#kontensejarah">
                         <button class="btn-ppdb">
-                            <img src="{{ asset('pesantren/asset/icon/arrow.svg')}}" alt="">Kenali Kami
+                            <img src="{{ asset('pesantren/asset/icon/arrow.svg') }}" alt="">Kenali Kami
                         </button>
                     </a>
                 </div>
                 <div class="col-lg-5 hero-kanan m-6">
-                    <img class="foto" src="{{ asset('pesantren/asset/img/profilBanner.png')}}" alt="">
+                    <img class="foto" src="{{ asset('pesantren/asset/img/profilBanner.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -74,7 +75,7 @@
         <div class="content-1">
             <div class="row">
                 <div class="col-lg-6 content-kiri">
-                    <img src="{{ asset('pesantren/asset/img/konten.jpg')}}" alt="">
+                    <img src="{{ asset('pesantren/asset/img/konten.jpg') }}" alt="">
                 </div>
                 <div class="col-lg-6 content-kanan mt-5">
                     <h1>
@@ -90,21 +91,28 @@
         <div class="content-2">
             <div class="row flex-container">
                 <div class="col-lg-6 content-kiri">
-                    <h1>
-                        Visi & Tujuan Pondok Pesantren ABC
-                    </h1>
-                    <p>Visi & tujuan kami adalah mencetak santri dan generasi islam yang bertakwa dan berbudi pekerti
-                        luhur yang dapat membantu dan berdampak bagi dirinya sediri, keluarga, dan masyarakat
-                        sekitarnya. Serta dapat menjadi tauladan dan inspirasi bagi lingkungan sekitarnya
+                    <h1>Visi & Tujuan Pondok Pesantren ABC</h1>
+                    <p>
+                        1. Visi
+                        Mewujudkan santri menjadi pejuang agama yang berakhlaqul Karimah, ikhlas, cerdas, Trampil, dan
+                        berjuang Rahmatallil'alamin. <br>
+                        2. Misi Pondok Pesantren
+                        - Memberikan semangat juang kepada santri melalui pembelajaran dan mengaji
+                        - membiasakan santri dengan lingkungan dan budaya pondok pesantren
+                        - memberikan pembelajaran yang dikemas dengan metode-metode praktis untuk kecerdasan dan
+                        ketrampilan santri.
+                        - pembelajaran Al-Qur'an Pema'naan Al-Qur'an dan nahwu shorof dengan metode praktis
+                        - pengabdian santri dalam lingkup luar pondok untuk menumbuhkan jiwa rahmatallil'alamin.
                     </p>
                 </div>
                 <div class="col-lg-6 content-kanan mt-5 order-xs-first">
-                    <img src="{{ asset('pesantren/asset/img/heroKanan.jpg')}}" alt="">
+                    <img src="{{ asset('pesantren/asset/img/heroKanan.jpg') }}" alt="">
                 </div>
             </div>
         </div>
+        
     </div>
-    </div>
+    
     <!-- End Content  -->
 
     <!-- Pilar Utama -->
@@ -118,17 +126,17 @@
             <div class="content-pilar text-center">
                 <div class="row">
                     <div class="col-lg-4">
-                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg')}}" alt="">
+                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg') }}" alt="">
                         <h3>Berilmu</h3>
                         <p>Menjadikan santri menjadi pribadi yang berilmu dan berwawasan</p>
                     </div>
                     <div class="col-lg-4">
-                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg')}}" alt="">
+                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg') }}" alt="">
                         <h3>Bertakwa</h3>
                         <p>Menjadikan santri bertakwa kepada Allah SWT</p>
                     </div>
                     <div class="col-lg-4">
-                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg')}}" alt="">
+                        <img src="{{ asset('pesantren/asset/icon/iconToga.svg') }}" alt="">
                         <h3>Berbudi pekerti</h3>
                         <p>Menjadikan santri menjadi pribadi yang memiliki budi pekerti luhur</p>
                     </div>
@@ -168,7 +176,8 @@
                 <div class="col-md-4">
                     <h5>Sosial Media</h5>
                     <p><a class="link-opacity-100" href="#">Instagram</a></p>
-                    <p><a class="link-opacity-100" href="https://youtube.com/@ponpesthoriqulirsyad9284?si=JcXtZp7c-eFBTsY4">Youtube</a></p>
+                    <p><a class="link-opacity-100"
+                            href="https://youtube.com/@ponpesthoriqulirsyad9284?si=JcXtZp7c-eFBTsY4">Youtube</a></p>
                 </div>
 
                 <!-- Column 3 -->

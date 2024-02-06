@@ -13,9 +13,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
     public function index(){
-        return view('templatelanding.dashboardlanding');
+        $kegiatan = Kegiatan::latest()->take(3)->get();
         
+        return view('templatelanding.dashboardlanding', compact('kegiatan'));
     }
+    
     public function kegiatan()
     {
         $kegiatan = Kegiatan::orderBy('created_at', 'desc')->paginate(6);
@@ -36,7 +38,8 @@ class Controller extends BaseController
         
     }
     public function detailkegiatan(){
-        return view('templatelanding.detailkegiatan');
+        $kegiatan = Kegiatan::orderBy('created_at', 'desc')->paginate(5);
+        return view('templatelanding.detailkegiatan', compact('kegiatan'));
         
     }
 }

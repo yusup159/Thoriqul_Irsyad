@@ -214,12 +214,13 @@ body{
     height: 320px;
 }
 
-.content-2 .content-kiri h1{
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    margin-top: 140px;
+.content-2 .content-kiri h1 {
+    vertical-align: middle;
+    display: inline-block;
+    margin-bottom: 0;
+    padding-top: 40px;   
 }
+
 
 .content-2 .content-kiri p{
     font-size: 14px;

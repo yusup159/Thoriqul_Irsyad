@@ -116,4 +116,5 @@ class BeritaController extends Controller
         return redirect()->route('databerita/admin')->with('success', 'berita berhasil dihapus!');
     }
     
+    
 }

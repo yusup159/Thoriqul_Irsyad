@@ -70,26 +70,29 @@
             <h3>Kegiatan Rutin</h3>
             <h1>Agenda Rutin Pondok Pesantren ABC</h1>
         </div>
-        <div class="bungkus-kegiatan">
+        <div class="bungkus-galang">
             <div class="row">
-                @foreach($kegiatan as $key => $kgtn)
-                <div class="card col-lg-4 mb-3">
-                    <a href="{{ route('detailkegiatan') }}">
-                        <img src="{{ asset('storage/fotokegiatan/' . basename($kgtn->fotokegiatan)) }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $kgtn->judul }}</h5>
-                            <p>{{ $kgtn->judul }}
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                @foreach ($kegiatan as $key => $kegi)
+                    <div class="card col-lg-4 mb-3">
+                        <a href="{{ route('detailberita') }}">
+                            <img src="{{ asset('storage/fotokegiatan/' . basename($kegi->fotokegiatan)) }}"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $kegi->judul }}</h5>
+                                <?php
+                                !!$deskripsi!! = $kegi->deskripsi;
+                                $potongan_deskripsi = substr($deskripsi, 0, 250); 
+                                echo "<p class='text-truncate'>$potongan_deskripsi...</p>";
+                                ?>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
-                
             </div>
         </div>
         {{ $kegiatan->withQueryString()->links('pagination::bootstrap-5') }}
     </div>
-    </div>
+    
     <!-- Card -->
     <!-- Footer -->
     <footer class="footer">

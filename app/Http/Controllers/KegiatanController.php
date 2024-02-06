@@ -118,5 +118,7 @@ class KegiatanController extends Controller
     
         return redirect()->route('datakegiatan/admin')->with('success', 'Kegiatan berhasil dihapus!');
     }
+   
+    
     
 }

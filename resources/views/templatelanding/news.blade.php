@@ -8,7 +8,7 @@
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('pesantren/css/news.css')}}">
+    <link rel="stylesheet" href="{{ asset('pesantren/css/news.css') }}">
 </head>
 
 <body>
@@ -17,7 +17,8 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
-                <img src="{{ asset('pesantren/asset/img/logopesantren.png')}}" style="width: 70px; margin-right: 10px;" alt="">
+                <img src="{{ asset('pesantren/asset/img/logopesantren.png') }}" style="width: 70px; margin-right: 10px;"
+                    alt="">
                 <h5 style="margin: 0;">Thoriqul Irsyad</h5>
             </a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
@@ -37,7 +38,7 @@
                     </li>
 
                 </ul>
-               
+
             </div>
         </div>
     </nav>
@@ -54,44 +55,44 @@
                     <p>Temukan berita terbaru mengenai pondok pesantren ABC disini</p>
                     <a href="#kontenberita">
                         <button class="btn-ppdb">
-                            <img src="{{ asset('pesantren/asset/icon/arrow.svg')}}" alt="">Baca Berita
+                            <img src="{{ asset('pesantren/asset/icon/arrow.svg') }}" alt="">Baca Berita
                         </button>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- End Hero -->
 
     <!-- Card -->
-    <div class="container"  id="kontenberita">
+    <div class="container" id="kontenberita">
         <div class="galang">
             <h3>Pusat Informasi</h3>
             <h1>Informasi Terbaru Pondok Pesantren</h1>
         </div>
         <div class="bungkus-galang">
             <div class="row">
-                @foreach($berita as $key => $berita)
-                <div class="card col-lg-4 mb-3">
-                    <a href="{{ route('detailberita') }}">
-                        <img src="{{ asset('storage/fotoberita/' . basename($berita->fotoberita)) }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $berita->judul }}</h5>
-                            <p>Kegiatan pengajian rutin sering sekali diadakan oleh pondok pesantren ABC. Fungsinya
-                                adalah
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                @foreach ($berita as $key => $item)
+                    <div class="card col-lg-4 mb-3">
+                        <a href="{{ route('detailberita') }}">
+                            <img src="{{ asset('storage/fotoberita/' . basename($item->fotoberita)) }}"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $item->judul }}</h5>
+                                <?php
+                                $deskripsi = $item->deskripsi;
+                                $potongan_deskripsi = substr($deskripsi, 0, 250); 
+                                echo "<p class='text-truncate'>$potongan_deskripsi...</p>";
+                                ?>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
-                
-               
-                
             </div>
         </div>
     </div>
-    <!-- Card -->
+    <!-- End Card -->
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -110,8 +111,9 @@
                 <div class="col-md-4">
                     <h5>Sosial Media</h5>
                     <p><a class="link-opacity-100" href="#">Instagram</a></p>
-                    <p><a class="link-opacity-100" href="https://youtube.com/@ponpesthoriqulirsyad9284?si=JcXtZp7c-eFBTsY4">Youtube</a></p>
-                
+                    <p><a class="link-opacity-100"
+                            href="https://youtube.com/@ponpesthoriqulirsyad9284?si=JcXtZp7c-eFBTsY4">Youtube</a></p>
+
                 </div>
 
                 <!-- Column 3 -->
@@ -123,7 +125,7 @@
             </div>
         </div>
     </footer>
-    <!-- Footer -->
+    <!-- End Footer -->
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

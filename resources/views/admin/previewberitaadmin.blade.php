@@ -1,4 +1,4 @@
-@extends('templatelanding.detailkegiatan')
+@extends('layoutadmin.templatedetailkegiatan')
 @section('kontendetailkegiatan')
 <div class="container mt-5">
     <div class="berita-utama">
