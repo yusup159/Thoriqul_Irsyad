@@ -50,9 +50,9 @@
             <div class="row">
                 <div class="col-lg hero-kiri">
                     <h1>
-                        Kegiatan Rutin Pondok Pesantren ABC
+                        Kegiatan Rutin Pondok Pesantren Thoriqul Irsyad
                     </h1>
-                    <p>Informasi lengkap mengenai kegiatan dan program kerja pondok pesantren ABC</p>
+                    <p>Informasi lengkap mengenai kegiatan dan program kerja pondok pesantren Thoriqul Irsyad</p>
                     <a href="#isikegiatan">
                         <button class="btn-ppdb">
                             <img src="{{ asset('pesantren/asset/icon/arrow.svg') }}" alt="">Daftar Kegiatan
@@ -98,11 +98,10 @@
                 <!-- Column 1 -->
                 <div class="col-md-4">
                     <h5>Menu</h5>
-                    <p><a class="link-opacity-100" href="./index.html">Beranda</a></p>
-                    <p><a class="link-opacity-100" href="./profil.html">Profil</a></p>
-                    <p><a class="link-opacity-100" href="./news.html">Portal Berita</a></p>
-                    <p><a class="link-opacity-100" href="./faq.html">FAQ</a></p>
-
+                    <p><a class="link-opacity-100" href="{{ route('index') }}">Beranda</a></p>
+                    <p><a class="link-opacity-100" href="{{ route('profil') }}">Profil</a></p>
+                    <p><a class="link-opacity-100" href="{{ route('berita') }}">Portal Berita</a></p>
+                    <p><a class="link-opacity-100" href="https://wa.me/6285293239446">FAQ</a></p>
                 </div>
 
                 <!-- Column 2 -->
@@ -116,7 +115,7 @@
                 <!-- Column 3 -->
                 <div class="col-md-4">
                     <h5>PondokPesantren</h5>
-                    <p>0272 - 897237</p>
+                    <p><a class="link-opacity-100" href="https://wa.me/6285293239446">+62 852-9323-9446</a></p>
                     <p>PondokPesantren.com</p>
                 </div>
             </div>

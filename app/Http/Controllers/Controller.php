@@ -27,7 +27,7 @@ class Controller extends BaseController
     }
     public function berita()
     {
-        $berita = Berita::orderBy('created_at', 'desc')->get();
+        $berita = Berita::orderBy('created_at', 'desc')->paginate(6);
         return view('templatelanding.news', compact('berita'));
     }
     public function profil()
