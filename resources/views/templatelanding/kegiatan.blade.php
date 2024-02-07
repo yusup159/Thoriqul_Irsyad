@@ -79,11 +79,7 @@
                                 class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $kegi->judul }}</h5>
-                                <?php
-                                !!$deskripsi!! = $kegi->deskripsi;
-                                $potongan_deskripsi = substr($deskripsi, 0, 250); 
-                                echo "<p class='text-truncate'>$potongan_deskripsi...</p>";
-                                ?>
+                                <p>{!! substr(strip_tags($kegi->deskripsi), 0, 100) !!}...</p>
                             </div>
                         </a>
                     </div>

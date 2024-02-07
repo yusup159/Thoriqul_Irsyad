@@ -70,6 +70,7 @@
             <h3>Pusat Informasi</h3>
             <h1>Informasi Terbaru Pondok Pesantren</h1>
         </div>
+    
         <div class="bungkus-galang">
             <div class="row">
                 @foreach ($berita as $key => $item)
@@ -79,11 +80,7 @@
                                 class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $item->judul }}</h5>
-                                <?php
-                                $deskripsi = $item->deskripsi;
-                                $potongan_deskripsi = substr($deskripsi, 0, 250); 
-                                echo "<p class='text-truncate'>$potongan_deskripsi...</p>";
-                                ?>
+                                <p>{!! substr(strip_tags($item->deskripsi), 0, 100) !!}...</p>
                             </div>
                         </a>
                     </div>
@@ -91,6 +88,7 @@
             </div>
         </div>
     </div>
+    
     <!-- End Card -->
 
     <!-- Footer -->
