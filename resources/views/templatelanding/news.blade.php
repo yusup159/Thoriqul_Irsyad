@@ -81,6 +81,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $item->judul }}</h5>
                                 <p>{!! substr(strip_tags($item->deskripsi), 0, 100) !!}...</p>
+                                <div style="text-align: right;">
+                                    <a href="{{ route('detailberita', ['id' => $item->id]) }}">Baca Selengkapnya</a>
+                                </div>
                             </div>
                         </a>
                     </div>

@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
                     <li class="nav-item">
-                        <a class="nav-link active"  href="{{ route('index') }}">Beranda</a>
+                        <a class="nav-link active" href="{{ route('index') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profil') }}">Profil & Sejarah</a>

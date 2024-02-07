@@ -114,6 +114,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $kegi->judul }}</h5>
                                 <p>{!! substr(strip_tags($kegi->deskripsi), 0, 100) !!}...</p>
+                                <div style="text-align: right;">
+                                    <a href="{{ route('detailkegiatan', ['id' => $kegi->id]) }}">Baca Selengkapnya</a>
+                                </div>
                             </div>
                         </a>
                     </div>
