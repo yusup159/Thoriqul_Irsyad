@@ -8,7 +8,7 @@
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('pesantren/css/kegiatan.css') }}">
+    <link rel="stylesheet" href="{{ asset('pesantren/css/detailBerita.css') }}">
 </head>
 
 <body>
@@ -16,16 +16,17 @@
     <!-- Navigasi -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
+            <a class="navbar-brand" href="{{ route('index') }}" style="display: flex; align-items: center;">
                 <img src="{{ asset('pesantren/asset/img/logopesantren.png') }}" style="width: 70px; margin-right: 10px;"
                     alt="">
                 <h5 style="margin: 0;">Thoriqul Irsyad</h5>
             </a>
+
+
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
-                    <!-- Tambahkan class text-center di sini -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Beranda</a>
+                        <a class="nav-link active"  href="{{ route('index') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profil') }}">Profil & Sejarah</a>
@@ -44,53 +45,11 @@
     </nav>
     <!-- End Navigasi -->
 
-    <!-- Hero -->
-    <div class="hero text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg hero-kiri">
-                    <h1>
-                        Kegiatan Rutin Pondok Pesantren Thoriqul Irsyad
-                    </h1>
-                    <p>Informasi lengkap mengenai kegiatan dan program kerja pondok pesantren Thoriqul Irsyad</p>
-                    <a href="#isikegiatan">
-                        <button class="btn-ppdb">
-                            <img src="{{ asset('pesantren/asset/icon/arrow.svg') }}" alt="">Daftar Kegiatan
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Content -->
+    @yield('kontendetailkegiatan')
 
-    <!-- End Hero -->
+    <!-- Content -->
 
-    <!-- Card -->
-    <div class="container" id="isikegiatan">
-        <div class="kegiatan">
-            <h3>Kegiatan Rutin</h3>
-            <h1>Agenda Rutin Pondok Pesantren ABC</h1>
-        </div>
-        <div class="bungkus-galang">
-            <div class="row">
-                @foreach ($kegiatan as $key => $kegi)
-                    <div class="card col-lg-4 mb-3">
-                        <a href="{{ route('detailkegiatan', ['id' => $kegi->id]) }}">
-                            <img src="{{ asset('storage/fotokegiatan/' . basename($kegi->fotokegiatan)) }}"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $kegi->judul }}</h5>
-                                <p>{!! substr(strip_tags($kegi->deskripsi), 0, 100) !!}...</p>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-        {{ $kegiatan->withQueryString()->links('pagination::bootstrap-5') }}
-    </div>
-
-    <!-- Card -->
     <!-- Footer -->
     <footer class="footer">
         <div class="container">

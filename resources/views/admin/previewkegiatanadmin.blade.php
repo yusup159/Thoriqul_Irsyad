@@ -1,4 +1,13 @@
-@extends('templatelanding.detailkegiatan')
+@extends('layoutadmin.templatedetailkegiatan')
+@section('navigasi')
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('datakegiatan/admin') }}">
+            <h5>< Kembali</h5>
+        </a>
+    </div>
+</nav>
+@endsection
 @section('kontendetailkegiatan')
     <div class="container mt-5">
         <div class="berita-utama">

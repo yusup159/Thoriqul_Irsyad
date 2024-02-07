@@ -24,8 +24,8 @@ Route::middleware(['guest'])->group(function(){
     Route::get('/kegiatan',[Controller::class,'kegiatan'])->name('kegiatan');
     Route::get('/berita',[Controller::class,'berita'])->name('berita');
     Route::get('/profil',[Controller::class,'profil'])->name('profil');
-    Route::get('/detailberita/',[Controller::class,'detailberita'])->name('detailberita');
-    Route::get('/detailkegiatan/',[Controller::class,'detailkegiatan'])->name('detailkegiatan');
+    Route::get('/detailberita/{id}',[Controller::class,'detailberita'])->name('detailberita');
+    Route::get('/detailkegiatan/{id}',[Controller::class,'detailkegiatan'])->name('detailkegiatan');
 
     Route::get('/login',[AuthController::class,'index'])->name('login');
     Route::get('/register',[AuthController::class,'register'])->name('register');

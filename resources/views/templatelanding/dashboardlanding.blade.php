@@ -108,7 +108,7 @@
             <div class="row">
                 @foreach ($kegiatan as $key => $kegi)
                     <div class="card col-lg-4 mb-3">
-                        <a href="{{ route('detailberita') }}">
+                        <a href="{{ route('detailkegiatan', ['id' => $kegi->id]) }}">
                             <img src="{{ asset('storage/fotokegiatan/' . basename($kegi->fotokegiatan)) }}"
                                 class="card-img-top" style="height: 200px;" alt="...">
                             <div class="card-body">

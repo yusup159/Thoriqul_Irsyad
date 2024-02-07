@@ -34,13 +34,14 @@ class Controller extends BaseController
     {
         return view('templatelanding.profil');
     }
-    public function detailberita()
+    public function detailberita($id)
     {
-        return view('templatelanding.detailberita');
+        $berita = Berita::find($id);
+        return view('templatelanding.detailberita', compact('berita'));
     }
-    public function detailkegiatan()
+    public function detailkegiatan($id)
     {
-        $kegiatan = Kegiatan::orderBy('created_at', 'desc')->paginate(5);
+        $kegiatan = Kegiatan::find($id);
         return view('templatelanding.detailkegiatan', compact('kegiatan'));
     }
 }

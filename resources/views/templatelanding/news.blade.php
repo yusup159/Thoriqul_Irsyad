@@ -75,7 +75,7 @@
             <div class="row">
                 @foreach ($berita as $key => $item)
                     <div class="card col-lg-4 mb-3">
-                        <a href="{{ route('detailberita') }}">
+                        <a href="{{ route('detailberita', ['id' => $item->id]) }}">
                             <img src="{{ asset('storage/fotoberita/' . basename($item->fotoberita)) }}"
                                 class="card-img-top" alt="...">
                             <div class="card-body">
