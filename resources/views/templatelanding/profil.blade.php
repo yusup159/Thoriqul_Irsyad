@@ -60,7 +60,7 @@
                     </a>
                 </div>
                 <div class="col-lg-5 hero-kanan m-6">
-                    <img class="foto" src="{{ asset('pesantren/asset/img/profilBanner.png') }}" alt="">
+                    <img class="foto" src="{{ asset('pesantren/asset/img/pendidikan.jpg') }}" alt="">
                 </div>
             </div>
         </div>
@@ -92,27 +92,29 @@
             <div class="row flex-container">
                 <div class="col-lg-6 content-kiri">
                     <h1>Visi & Tujuan Pondok Pesantren ABC</h1>
+                    <br>
                     <p>
-                        1. Visi
+                        <b>Visi:</b><br>
                         Mewujudkan santri menjadi pejuang agama yang berakhlaqul Karimah, ikhlas, cerdas, Trampil, dan
-                        berjuang Rahmatallil'alamin. <br>
-                        2. Misi Pondok Pesantren
-                        - Memberikan semangat juang kepada santri melalui pembelajaran dan mengaji
-                        - membiasakan santri dengan lingkungan dan budaya pondok pesantren
+                        berjuang Rahmatallil'alamin. <br><br>
+                        <b>Misi:</b><br>
+                        - Memberikan semangat juang kepada santri melalui pembelajaran dan mengaji. <br>
+                        - membiasakan santri dengan lingkungan dan budaya pondok pesantren. <br>
                         - memberikan pembelajaran yang dikemas dengan metode-metode praktis untuk kecerdasan dan
-                        ketrampilan santri.
-                        - pembelajaran Al-Qur'an Pema'naan Al-Qur'an dan nahwu shorof dengan metode praktis
+                        ketrampilan santri. <br>
+                        - pembelajaran Al-Qur'an Pema'naan Al-Qur'an dan nahwu shorof dengan metode praktis. <br>
                         - pengabdian santri dalam lingkup luar pondok untuk menumbuhkan jiwa rahmatallil'alamin.
                     </p>
                 </div>
-                <div class="col-lg-6 content-kanan mt-5 order-xs-first">
-                    <img src="{{ asset('pesantren/asset/img/heroKanan.jpg') }}" alt="">
+                <div class="col-lg-6 content-kanan mt-5 order-xs-first" style="max-width: 100%; max-height: 100%; overflow: hidden;">
+                    <img src="{{ asset('pesantren/asset/img/visi.jpg') }}" alt="" style="width: 100%; height: auto;">
                 </div>
             </div>
         </div>
         
+
     </div>
-    
+
     <!-- End Content  -->
 
     <!-- Pilar Utama -->
@@ -120,7 +122,7 @@
         <div class="container">
             <div class="header text-center">
                 <h3>Bertakwa & berbudi pekerti luhur</h3>
-                <h1>3 Pilar Utama Pondok Pesantren ABC</h1>
+                <h1>3 Pilar Utama Pondok Pesantren Thoriqul Irsyad</h1>
                 <p>Fondasi penting dalam rangka membangun akhlak santri</p>
             </div>
             <div class="content-pilar text-center">
@@ -149,9 +151,9 @@
     <!-- News -->
     <div class="container">
         <div class="news">
-            <h1>Informasi Seputar Pondok Pesantren ABC</h1>
-            <p>Kamu Bisa mendapatkan informasi lebih lanjut dengan mengklick button dibawah</p>
-            <button type="submit" class="btn btn-whatsapp mb-3">Contact Whatsapp</button>
+            <h1>Informasi Seputar Pondok Pesantren Thoriqul Irsyad</h1>
+            <p>Kamu Bisa mendapatkan informasi lebih lanjut dengan mengklik button dibawah</p>
+            <a href="https://wa.me/6285293239446" class="btn btn-whatsapp mb-3">Contact Whatsapp </a>
         </div>
     </div>
     <!-- End News -->
@@ -165,11 +167,10 @@
                 <!-- Column 1 -->
                 <div class="col-md-4">
                     <h5>Menu</h5>
-                    <p><a class="link-opacity-100" href="./index.html">Beranda</a></p>
-                    <p><a class="link-opacity-100" href="./profil.html">Profil</a></p>
-                    <p><a class="link-opacity-100" href="./news.html">Portal Berita</a></p>
-                    <p><a class="link-opacity-100" href="./faq.html">FAQ</a></p>
-
+                    <p><a class="link-opacity-100" href="{{ route('index') }}">Beranda</a></p>
+                    <p><a class="link-opacity-100" href="{{ route('profil') }}">Profil</a></p>
+                    <p><a class="link-opacity-100" href="{{ route('berita') }}">Portal Berita</a></p>
+                    <p><a class="link-opacity-100" href="https://wa.me/6285293239446">FAQ</a></p>
                 </div>
 
                 <!-- Column 2 -->
@@ -183,7 +184,7 @@
                 <!-- Column 3 -->
                 <div class="col-md-4">
                     <h5>PondokPesantren</h5>
-                    <p>0272 - 897237</p>
+                    <p><a class="link-opacity-100" href="https://wa.me/6285293239446">+62 852-9323-9446</a></p>
                     <p>PondokPesantren.com</p>
                 </div>
             </div>

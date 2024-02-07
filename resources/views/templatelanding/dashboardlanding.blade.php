@@ -172,7 +172,7 @@
                 <!-- Column 3 -->
                 <div class="col-md-4">
                     <h5>PondokPesantren</h5>
-                    <p>+62 852-9323-9446</p>
+                    <p><a class="link-opacity-100" href="https://wa.me/6285293239446">+62 852-9323-9446</a></p>
                     <p>PondokPesantren.com</p>
                 </div>
             </div>
