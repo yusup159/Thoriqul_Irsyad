@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AksiCendekia</title>
+    <title>Thoriqul Irsyad</title>
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -50,9 +50,9 @@
             <div class="row">
                 <div class="col-lg hero-kiri">
                     <h1>
-                        Portal Berita Pondok Pesantren ABC
+                        Portal Berita Pondok Pesantren Thoriqul Irsyad
                     </h1>
-                    <p>Temukan berita terbaru mengenai pondok pesantren ABC disini</p>
+                    <p>Temukan berita terbaru mengenai pondok pesantren Thoriqul Irsyad disini</p>
                     <a href="#kontenberita">
                         <button class="btn-ppdb">
                             <img src="{{ asset('pesantren/asset/icon/arrow.svg') }}" alt="">Baca Berita
@@ -70,7 +70,7 @@
             <h3>Pusat Informasi</h3>
             <h1>Informasi Terbaru Pondok Pesantren</h1>
         </div>
-    
+
         <div class="bungkus-galang">
             <div class="row">
                 @foreach ($berita as $key => $item)
@@ -88,7 +88,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- End Card -->
 
     <!-- Footer -->

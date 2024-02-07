@@ -9,21 +9,23 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('pengurus.login');
     }
-    public function proseslogin(Request $request){
+    public function proseslogin(Request $request)
+    {
         $request->validate([
-            'email'=> 'required',
-            'password'=> 'required',
-        ],[
-            'email.required'=> 'email wajib di isi',
-            'password.required'=> 'password wajib di isi',
+            'email' => 'required',
+            'password' => 'required',
+        ], [
+            'email.required' => 'email wajib di isi',
+            'password.required' => 'password wajib di isi',
         ]);
 
-        $infologin=[
-            'email'=>$request->email,
-            'password'=>$request->password,
+        $infologin = [
+            'email' => $request->email,
+            'password' => $request->password,
         ];
 
         if (Auth::attempt($infologin)) {
@@ -35,9 +37,9 @@ class AuthController extends Controller
         } else {
             return redirect('/login')->withErrors('Username dan Password tidak sesuai')->withInput();
         }
-        
     }
-    public function register(){
+    public function register()
+    {
         return view('pengurus.register');
     }
     public function prosesregister(Request $request)
@@ -47,38 +49,38 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required',
-            'fotopengururs' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
-        ],[
-            'name.required'=> 'Nama wajib di isi',
-            'email.required'=> 'Email wajib di isi',
-            'email.email'=> 'Format email tidak valid',
-            'email.unique'=> 'Email sudah terdaftar',
-            'password.required'=> 'Password wajib di isi',
-            'password.min'=> 'Password minimal 6 karakter',
+            'fotopengururs' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'name.required' => 'Nama wajib di isi',
+            'email.required' => 'Email wajib di isi',
+            'email.email' => 'Format email tidak valid',
+            'email.unique' => 'Email sudah terdaftar',
+            'password.required' => 'Password wajib di isi',
+            'password.min' => 'Password minimal 6 karakter',
             'password.confirmed' => 'Konfirmasi password tidak cocok',
-            'fotopengururs.required'=> 'Foto wajib di isi',
-            'fotopengururs.image'=> 'File harus berupa gambar',
-            'fotopengururs.mimes'=> 'Format gambar harus jpeg, png, jpg, gif',
-            'fotopengururs.max'=> 'Ukuran gambar maksimal 2MB',
+            'fotopengururs.required' => 'Foto wajib di isi',
+            'fotopengururs.image' => 'File harus berupa gambar',
+            'fotopengururs.mimes' => 'Format gambar harus jpeg, png, jpg, gif',
+            'fotopengururs.max' => 'Ukuran gambar maksimal 2MB',
         ]);
-        
-    
-        $fotoPath = $request->file('fotopengururs')->store('public/fotopengurus'); 
-    
+
+
+        $fotoPath = $request->file('fotopengururs')->store('public/fotopengurus');
+
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'fotopengurus' => $fotoPath,
-            'role_id' => 2, 
+            'role_id' => 2,
         ]);
-    
-       
-        return redirect()->route('login')->with('success', 'Registrasi berhasil!');
 
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil!');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect('/login');
     }

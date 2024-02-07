@@ -12,34 +12,35 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
-    public function index(){
+    public function index()
+    {
         $kegiatan = Kegiatan::latest()->take(3)->get();
-        
+
         return view('templatelanding.dashboardlanding', compact('kegiatan'));
     }
-    
+
     public function kegiatan()
     {
         $kegiatan = Kegiatan::orderBy('created_at', 'desc')->paginate(6);
 
         return view('templatelanding.kegiatan', compact('kegiatan'));
     }
-    public function berita(){
+    public function berita()
+    {
         $berita = Berita::orderBy('created_at', 'desc')->get();
-        return view('templatelanding.news',compact('berita'));
-        
+        return view('templatelanding.news', compact('berita'));
     }
-    public function profil(){
+    public function profil()
+    {
         return view('templatelanding.profil');
-        
     }
-    public function detailberita(){
+    public function detailberita()
+    {
         return view('templatelanding.detailberita');
-        
     }
-    public function detailkegiatan(){
+    public function detailkegiatan()
+    {
         $kegiatan = Kegiatan::orderBy('created_at', 'desc')->paginate(5);
         return view('templatelanding.detailkegiatan', compact('kegiatan'));
-        
     }
 }

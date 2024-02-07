@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pondok Pesantren</title>
+    <title>Thoriqul Irsyad</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css">
@@ -77,23 +77,23 @@
             <div class="header text-center">
                 <h3>Berpengalaman & Berdedikasi tinggi</h3>
                 <h1> Pengasuh dan Pengurus<br>Pondok Pesantren</h1>
-            </div> 
-                        <div class="slider-container">
-                            <div class="slider-wrapper">
-                                <div class="slide">
-                                    <img src="{{ asset('pesantren/asset/img/usttads/Adi.svg') }}" alt="Slide 3">
-                                </div>
-                                <div class="slide">
-                                    <img src="{{ asset('pesantren/asset/img/usttads/Felix.svg') }}" alt="Slide 1">
-                                </div>
-                                <div class="slide">
-                                    <img src="{{ asset('pesantren/asset/img/usttads/Gus Iqdam.svg') }}" alt="Slide 2">
-                                </div>
-                                <div class="slide">
-                                    <img src="{{ asset('pesantren/asset/img/usttads/Hanan Ataki.svg') }}" alt="Slide 3">
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slide">
+                        <img src="{{ asset('pesantren/asset/img/usttads/Adi.svg') }}" alt="Slide 3">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('pesantren/asset/img/usttads/Felix.svg') }}" alt="Slide 1">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('pesantren/asset/img/usttads/Gus Iqdam.svg') }}" alt="Slide 2">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ asset('pesantren/asset/img/usttads/Hanan Ataki.svg') }}" alt="Slide 3">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- End Partnership -->
@@ -120,8 +120,8 @@
                 @endforeach
             </div>
         </div>
-        
-        
+
+
     </div>
 
     <!-- Card -->
@@ -140,8 +140,7 @@
 
                 </div>
                 <div class="col-lg-5 hero-kanan-review" style="margin-top: 30px; margin-bottom: 30px;">
-                    <img src="{{ asset('pesantren/asset/img/generasi.jpg') }}"
-                        style="width: 600px; height: 420px;">
+                    <img src="{{ asset('pesantren/asset/img/generasi.jpg') }}" style="width: 600px; height: 420px;">
                 </div>
             </div>
         </div>
@@ -183,7 +182,7 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+
 </body>
 
 </html>

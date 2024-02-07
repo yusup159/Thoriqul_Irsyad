@@ -18,6 +18,6 @@ class Berita extends Model
         'tanggal',
         'fotoberita',
         'deskripsi',
-        'judul'];
-
+        'judul'
+    ];
 }

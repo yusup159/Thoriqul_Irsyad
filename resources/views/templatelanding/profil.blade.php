@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profil AksiCendekia</title>
+    <title> Thoriqul Irsyad</title>
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -106,12 +106,14 @@
                         - pengabdian santri dalam lingkup luar pondok untuk menumbuhkan jiwa rahmatallil'alamin.
                     </p>
                 </div>
-                <div class="col-lg-6 content-kanan mt-5 order-xs-first" style="max-width: 100%; max-height: 100%; overflow: hidden;">
-                    <img src="{{ asset('pesantren/asset/img/visi.jpg') }}" alt="" style="width: 100%; height: auto;">
+                <div class="col-lg-6 content-kanan mt-5 order-xs-first"
+                    style="max-width: 100%; max-height: 100%; overflow: hidden;">
+                    <img src="{{ asset('pesantren/asset/img/visi.jpg') }}" alt=""
+                        style="width: 100%; height: auto;">
                 </div>
             </div>
         </div>
-        
+
 
     </div>
 

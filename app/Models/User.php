@@ -19,11 +19,11 @@ class User extends Authenticatable
         'role_id',
     ];
 
-   
+
     protected $hidden = [
         'password',
-       
-    ];    
+
+    ];
     protected $casts = [
         'password' => 'hashed',
     ];

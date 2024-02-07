@@ -14,15 +14,15 @@ use Illuminate\Pagination\Paginator;
 
 class AdminController extends Controller
 {
-    public function profiladmin(){
+    public function profiladmin()
+    {
         return view('admin.profiladmin');
-
     }
     public function proseseditprofiladmin(Request $request, $id)
     {
         $user = User::find($id);
         $password = Auth::user()->password;
-    
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
@@ -39,62 +39,63 @@ class AdminController extends Controller
             'fotopengururs.mimes' => 'Format gambar harus jpeg, png, jpg, gif',
             'fotopengururs.max' => 'Ukuran gambar maksimal 2MB',
         ]);
-    
+
         if (Hash::check($request->password_lama, $password)) {
             if ($request->hasFile('fotopengururs')) {
                 $fotoPath = $request->file('fotopengururs')->store('public/fotopengurus');
                 $user->fotopengurus = $fotoPath;
             }
-    
+
             $userData = [
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'role_id' => 2,
             ];
-    
+
             if ($request->filled('password_baru')) {
                 $userData['password'] = bcrypt($request->input('password_baru'));
             }
-    
+
             $user->update($userData);
-    
+
             return redirect()->route('profil/admin')->with('success', 'Profil berhasil diubah!');
         } else {
             return redirect()->route('profil/admin')->withErrors('Password lama tidak cocok');
         }
     }
-    public function datauser(){
+    public function datauser()
+    {
         $user = User::orderBy('created_at', 'desc')->get();
-     return view('admin.user', compact('user'));
-
+        return view('admin.user', compact('user'));
     }
-    public function deleteuser($id){
+    public function deleteuser($id)
+    {
         $user = User::find($id);
-    
+
         Storage::delete($user->fotopengurus);
-    
-    
+
+
         $user->delete();
-    
+
         return redirect()->route('datauser/admin')->with('success', 'User berhasil dihapus!');
     }
-    
-    public function dashboardadmin(){
+
+    public function dashboardadmin()
+    {
         return view('admin.dashboard');
     }
-   
-    public function databeritaadmin(){
-       
+
+    public function databeritaadmin()
+    {
+
         $berita = Berita::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.berita', compact('berita'));
-        
     }
     public function datakegiatanadmin()
     {
         $kegiatan = Kegiatan::orderBy('created_at', 'desc')->paginate(5);
 
-        
+
         return view('admin.kegiatan', compact('kegiatan'));
     }
-    
 }

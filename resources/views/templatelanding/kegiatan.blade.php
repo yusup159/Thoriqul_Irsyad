@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AksiCendekia</title>
+    <title>Thoriqul Irsyad</title>
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('pesantren/css/kegiatan.css')}}">
+    <link rel="stylesheet" href="{{ asset('pesantren/css/kegiatan.css') }}">
 </head>
 
 <body>
@@ -17,7 +17,8 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
-                <img src="{{ asset('pesantren/asset/img/logopesantren.png')}}" style="width: 70px; margin-right: 10px;" alt="">
+                <img src="{{ asset('pesantren/asset/img/logopesantren.png') }}" style="width: 70px; margin-right: 10px;"
+                    alt="">
                 <h5 style="margin: 0;">Thoriqul Irsyad</h5>
             </a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
@@ -37,7 +38,7 @@
                     </li>
 
                 </ul>
-            
+
             </div>
         </div>
     </nav>
@@ -53,8 +54,8 @@
                     </h1>
                     <p>Informasi lengkap mengenai kegiatan dan program kerja pondok pesantren ABC</p>
                     <a href="#isikegiatan">
-                        <button class="btn-ppdb" >
-                            <img src="{{ asset('pesantren/asset/icon/arrow.svg')}}" alt="">Daftar Kegiatan
+                        <button class="btn-ppdb">
+                            <img src="{{ asset('pesantren/asset/icon/arrow.svg') }}" alt="">Daftar Kegiatan
                         </button>
                     </a>
                 </div>
@@ -88,7 +89,7 @@
         </div>
         {{ $kegiatan->withQueryString()->links('pagination::bootstrap-5') }}
     </div>
-    
+
     <!-- Card -->
     <!-- Footer -->
     <footer class="footer">
@@ -108,7 +109,8 @@
                 <div class="col-md-4">
                     <h5>Sosial Media</h5>
                     <p><a class="link-opacity-100" href="#">Instagram</a></p>
-                    <p><a class="link-opacity-100" href="https://youtube.com/@ponpesthoriqulirsyad9284?si=JcXtZp7c-eFBTsY4">Youtube</a></p>
+                    <p><a class="link-opacity-100"
+                            href="https://youtube.com/@ponpesthoriqulirsyad9284?si=JcXtZp7c-eFBTsY4">Youtube</a></p>
                 </div>
 
                 <!-- Column 3 -->

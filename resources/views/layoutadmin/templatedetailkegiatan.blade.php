@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AksiCendekia</title>
+    <title>Thoriqul Irsyad</title>
 
     <!-- Tambahkan link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('pesantren/css/detailBerita.css')}}">
+    <link rel="stylesheet" href="{{ asset('pesantren/css/detailBerita.css') }}">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                     </li>
 
                 </ul>
-               
+
             </div>
         </div>
     </nav>

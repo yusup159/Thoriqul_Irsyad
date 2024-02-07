@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 
 class PengurusController extends Controller
 {
-    public function dashboardpengurus(){
+    public function dashboardpengurus()
+    {
         return view('pengurus.dashboard');
     }
-    public function databeritapengurus(){
+    public function databeritapengurus()
+    {
         return view('pengurus.berita');
     }
-    public function datakegiatanpengurus(){
+    public function datakegiatanpengurus()
+    {
         return view('pengurus.kegiatan');
     }
 }
